@@ -1,0 +1,7 @@
+.fullScreenHeight {
+    content: 'viewport-units-buggyfill; height: 100vh;';
+}
+
+.largeSliderHeight .slidedItem .port {
+    content: 'viewport-units-buggyfill; height: 100vh;';
+}

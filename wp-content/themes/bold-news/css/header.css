@@ -1,0 +1,3184 @@
+/* Header */
+.logo, .topBarInLogoArea { visibility:hidden; }
+
+.mainHeader  {
+	width: 100%;
+	position: absolute;
+	background-color: inherit;
+	transform: translateY(0);
+	font-family: "$(menuFont)";
+	.btMenuVertical.btAccentDarkHeader &, .btMenuVertical.btLightAccentHeader & {
+		background-color: $(accentColor);
+		.btVerticalMenuTrigger {
+			.btIco.btIcoDefaultType .btIcoHolder {
+				&:before {color: $(darkFontColor);}
+			}
+		}
+		.logo {transition: opacity 400ms ease;}
+	}
+	.btMenuVertical.btBlackHeader & {
+		background-color: #000;
+	}
+	.btMenuVertical.btMenuVerticalOn & {
+		.logo {
+			opacity: 0;
+			pointer-events: none;
+			transition: 300ms ease opacity;
+		}
+	} 
+}
+.mainHeader:not(.gutter) .port {
+	padding: 0 $(pagePadding)px;	
+}
+
+body.btAccentDarkHeader.btBoxedPage.btBelowMenu, body.btAccentLightHeader.btBoxedPage.btBelowMenu {
+	.mainHeader:not(.gutter) .port {
+		padding: 0;	
+	}	
+}
+
+.btPageTransitions .mainHeader {
+	z-index: 1020;
+}
+
+.mainHeader.btDarkSkin, .btLightSkin .mainHeader.btDarkSkin, .btDarkSkin .mainHeader {
+	background-color: $(darkBgColor);
+}
+.mainHeader.btLightSkin, .btDarkSkin .mainHeader.btLightSkin, .btLightSkin .mainHeader {
+	background-color: $(lightBgColor);
+}
+
+/* Below menu */
+
+.btBelowMenu:not(.btStickyHeaderActive) .mainHeader {
+	background-color: transparent;
+}
+
+.btMenuHorizontal:not(.btBelowMenu) .mainHeader {
+	box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
+	.topBar:before {
+		display: block;
+		content: ' ';
+		position: absolute;
+		top: -1px;
+		bottom: 0;
+		left: -2000em;
+		right: -2000em;
+		background-color: $(lightBorderColor);
+		z-index: -1;
+		height: 42px;
+	}
+}
+.btDarkSkin.btMenuHorizontal:not(.btBelowMenu) .mainHeader {
+	box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
+	.topBar:before {
+		display: block;
+		content: ' ';
+		position: absolute;
+		top: -1px;
+		bottom: 0;
+		left: -2000em;
+		right: -2000em;
+		background-color: $(darkBgColor);
+		z-index: -1;
+		box-shadow: 0 0 10px 0 $(lightBorderColor);
+		height: 42px;
+	}
+}
+
+/* Main menu */
+.btLogoArea {
+    position: relative;
+	z-index: 1;
+}
+
+.menuPort {	
+	font-family: "$(menuFont)";
+	visibility: hidden;
+	font-size: $(menuFontSize)px;
+	nav ul {
+		list-style: none;
+		display: block;
+		margin: 0;
+		padding: 0;
+		transition: opacity 200ms ease 0s;
+		li {
+			display: block;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			> a, .bt_mega_menu_title {
+				display: block;
+				position: relative;
+				padding: 0.6875em 1em;
+				font-weight: 400;
+				transition: 300ms ease all;
+				cursor: pointer;
+				&.btEmptyElement {
+					pointer-events: none;
+					&:before {
+						display: none;
+					}
+				}
+			}
+		}
+		li > a:hover, li > .bt_mega_menu_title:hover {
+			text-decoration: none;
+		}
+		li.on > a, li.on > .bt_mega_menu_title {
+			transition: 300ms ease all;
+			:lightSkinSelector & {
+				background: $(lightBorderColor);
+			}
+			:darkSkinSelector & {
+				background: $(darkBorderColor);
+			}
+		}
+		ul li {
+			transition: opacity 300ms ease;
+			> a, > .bt_mega_menu_title {
+				background: transparent !important;
+				&:hover {
+					color: $(accentColor) !important;
+				}
+			}
+		}
+		ul li.on {
+			opacity: 1;
+		}
+	}
+	
+	nav > ul > li > a, nav > ul > li > .bt_mega_menu_title {
+		line-height: $(logoHeight)px;
+		padding: 0 1.33em;
+		border-radius: $(softBorderRadius);
+	}
+	nav > ul > li.menu-item-has-children > a, nav > ul > li.menu-item-has-children > .bt_mega_menu_title {
+		border-radius: $(softBorderRadius) $(softBorderRadius) 0 0;
+	}
+	.btBelowLogoArea & {
+		nav > ul > li > a, nav > ul > li > .bt_mega_menu_title {
+			line-height: math($(belowLogoMenuHeight)-8)px;
+		}	
+	}
+	nav ul ul li a {
+		font-weight: 400;
+	}
+
+}
+
+/* Logo and triggers */
+
+.btTextLogo {
+	font-family: "$(logoFont)";
+	font-size: 2em;
+	font-weight: 800;
+	line-height: $(logoHeight)px;
+	.btMenuVertical & { line-height: math($(logoHeight)*0.8)px; }
+}
+
+.btLogoArea {
+	.logo {
+		.btMenuVertical & {
+			transform: none !important;
+		}
+		line-height: $(logoHeight)px;
+		padding: math(($(logoHeight)*2.12-$(logoHeight))/2)px $(innerHorizontalPadding)px;
+		float: left;
+		transition: 300ms ease opacity;
+		.rtl & {float: right;}
+			img {
+			height: $(logoHeight)px;
+			width: auto;
+			display: block;
+			.btMenuVertical & {
+				height: math($(logoHeight)*0.8)px;
+			}
+		}
+		img.btAltLogo {
+			display: none;
+		}
+		.btMenuVertical & {
+			padding: math(($(logoHeight)*0.8*2.15-$(logoHeight)*0.8)/2)px 0;
+			padding-left: 20px;
+		}
+		.btMenuVertical.rtl & {
+			padding-left: 0;
+			padding-right: 20px;
+		}
+	}
+}
+
+.btHorizontalMenuTrigger {
+	float: right;
+	cursor: pointer;
+	margin: math($(logoHeight)*0.82)px 0 math($(logoHeight)*0.82)px $(innerHorizontalPadding)px;
+	display: none;
+	position: relative;
+	z-index: 1;
+	width: 32px;
+	height: 24px;
+	.rtl & {
+		float: left;
+		margin-left: 0;
+		margin-right: $(innerHorizontalPadding)px;
+	}
+	&:before, &:after {
+		position: absolute;
+		border-top: 2px solid $(lightFontColor);
+		top: 0;
+		left: 0;
+		right: 0;
+		content: "";
+		transform-origin: left top;
+		transition: 300ms ease all;
+		:lightSkinSelector & {
+			border-color: $(lightFontColor);
+		}
+		:darkSkinSelector & {
+			border-color: $(darkFontColor);
+		}
+	}
+	&:after {
+		top: auto;
+		bottom: 0;
+		transform-origin: left bottom;
+	}
+	.btIco {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		margin-top: -1px !important;
+		border-top: 2px solid $(lightFontColor);
+		opacity: 1;
+		:lightSkinSelector & {
+			border-color: $(lightFontColor);
+		}
+		:darkSkinSelector & {
+			border-color: $(darkFontColor);
+		}
+	}
+	.btIco.btIcoDefaultType	{
+		margin: 0;
+		.btIcoHolder:before {
+			display: none;
+		}
+	}
+	.btShowMenu & {
+		&:before {
+			transition: 300ms ease all;
+			transform: rotate(45deg);
+			left: 5px;
+			width: 100%;
+		}
+		&:after {
+			transition: 300ms ease all;
+			transform: rotate(-45deg);
+			left: 5px;
+			width: 100%;
+		}
+		.btIco {
+			left: 50%;
+			right: 50%;
+			opacity: 0;
+		}
+	}
+	&:hover {
+		&:before, &:after {
+			border-color: $(accentColor);
+		}
+		.btIco {
+			border-color: $(accentColor);
+		}
+	}
+	.rtl .btShowMenu & {
+		margin-left: 0;
+		margin-right: $(innerHorizontalPadding)px;
+	}
+	.btLightAccentHeader &, .btLightAccentHeader .btShowMenu &, .btBlackHeader &, .btBlackHeader .btShowMenu &, .btAccentDarkHeader &, .btAccentDarkHeader .btShowMenu & {
+		&:before, &:after {
+			border-color: $(darkFontColor);
+		}
+		.btIco {
+			border-color: $(darkFontColor);
+		}
+	}
+	.btStickyHeaderActive & {
+		margin-top: math($(logoHeight)*0.26)px;
+		margin-bottom: math($(logoHeight)*0.26)px;
+	}
+}
+/* Only horizontal menu */
+.btMenuHorizontal .menuPort {	
+	nav > ul > :any(li.current-menu-ancestor, li.current-page-ancestor, li.current-menu-item) {
+			> a, > .bt_mega_menu_title {
+				color: $(accentColor);
+			}		
+	}
+}
+
+/* Skins */
+
+:darkSkinSelector  {
+	.menuPort > nav > ul > li > a, .menuPort > nav > ul > li > .bt_mega_menu_title {
+		color: $(darkFontColor);
+	}
+}
+
+:lightSkinSelector {
+	.menuPort > nav > ul > li > a, .menuPort > nav > ul > li > .bt_mega_menu_title {
+		color: $(lightFontColor);
+	}	
+}
+
+.btAccentLightHeader.btDarkSkin {
+	.menuPort > nav > ul > li > a, .menuPort > nav > ul > li > .bt_mega_menu_title {
+		color: $(lightFontColor);
+	}		
+}
+
+.btMenuHorizontal {
+	.menuPort ul ul {
+		background-color: $(lightBgColor);
+		li a {
+			padding-left: 1.538em;
+			padding-right: 1.5538em;
+			color:  $(lightFontColor);	
+		}
+		li > a {
+			transition: 300ms ease color, 300ms ease padding;
+			&:before {
+				content: ' ';
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				height: 1px;
+				background-color: $(accentColor);
+				width: 20px;
+				transform: scaleX(0);
+				transition: 300ms ease background-color, 300ms ease border, 300ms ease transform;
+				transform-origin: 0;
+			}
+			&:hover:before {
+				transform: scaleX(1);
+				transition: 300ms ease background-color, 300ms ease border, 300ms ease transform;
+			}
+			&:hover {
+				padding-left: 2.307em;
+				padding-right: 0.769em;
+				transition: 300ms ease color, 300ms ease padding;
+			}
+		}
+		li.menu-item-has-children > a {
+			&:after {
+				font-family: FontAwesome;
+				content: "\f105";
+				display: block;
+				position: absolute;
+				top: .6875em;
+				right: 1em;
+				transition: 300ms ease all;
+			}
+			&:hover:after {
+				right: .5em;
+				color: $(accentColor);
+			}
+		}
+		li.current-menu-item > a {
+			&:before {
+				background-color: $(lightFontColor);
+				border-color:  $(lightFontColor);
+				transform: scaleX(0.35);
+			}
+			&:hover:before {
+				background-color: $(accentColor);
+				border-color: $(accentColor);
+				transform: scaleX(1);
+			}
+		}
+	}
+}
+.btMenuHorizontal.rtl {
+	.menuPort ul ul {
+		li > a {
+			&:before {
+				left: auto;
+				right: -20px;
+			}
+			&:hover:before {
+				transform: scaleX(-1);
+			}
+			&:hover {
+				padding-left: 0.769em;
+				padding-right: 2.307em;
+			}
+		}
+		li.menu-item-has-children > a {
+			&:after {
+				right: auto;
+				left: 1em;
+				transform: rotate(180deg);
+				transition: 300ms ease all;
+			}
+			&:hover:after {
+				right: auto;
+				left: .5em;
+			}
+		}
+		li.current-menu-item > a {
+			&:before {
+				left: auto;
+				right: -13px;
+			}
+			&:hover:before {
+				transform: scaleX(-1);
+			}
+		}
+	}
+}
+
+:darkSkinSelector :any(.topBarInMenu:after, .topBar:before) {
+	background-color: $(darkBorderColor);
+}
+
+/* Subtogglers */
+
+.subToggler {
+	display: none;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	width: 45px;
+	z-index: 80;
+	padding: 0px 0 0;
+	text-align: center;
+		transform: rotate(0deg);
+		transition: 300ms ease all;
+	.on > & {
+		transform: rotate(180deg);
+		transition: 300ms ease all;
+	}
+	body.btMenuVertical & {
+		display: block !important;
+		padding: 20px 0;
+		line-height: 1;
+		right: 0;
+    	top: -5px;
+	}
+	body.btMenuHorizontal & {
+		right: -math(($(belowLogoMenuHeight)-8)/2)px;
+		line-height: $(logoHeight)px;
+	}
+	body.btMenuHorizontal.btMenuBelowLogo & {
+		line-height: math($(belowLogoMenuHeight)-8)px;
+	}
+	body.btMenuHorizontal .menuPort ul ul & {
+		right: 0px;
+		line-height: inherit;
+		padding: .75em 0;
+		transform: rotate(-90deg);
+		background: $(lightBgColor);
+		color: $(lightFontColor);
+		transition: 300ms ease all;
+		border-radius: 50%;
+	}
+	body.btMenuHorizontal .menuPort ul ul li.on & {
+		transform: rotate(90deg);
+		transition: 300ms ease all;
+	}
+	body.btMenuHorizontal.rtl .menuPort ul ul & {
+		right: auto;
+		left: 0;
+		transform: rotate(90deg);
+	}
+	body.btMenuHorizontal.btMenuCenter .rightNav ul ul & {
+		right: auto;
+		left: 0;
+		transform: rotate(90deg);
+	}
+	body.btMenuHorizontal.btMenuCenter.rtl .leftNav ul ul & {
+		right: 0;
+		left: auto;
+		transform: rotate(-90deg);
+	}
+	body.btMenuHorizontal.btMenuRight .menuPort ul li:last-child ul & {
+		right: auto;
+		left: 0;
+		transform: rotate(90deg);
+	}
+	body.btMenuHorizontal.btMenuLeft.rtl .menuPort ul li:last-child ul & {
+		right: 0;
+		left: auto;
+		transform: rotate(-90deg);
+	}
+	body.btMenuHorizontal.rtl .menuPort ul ul li.on & {
+		transform: rotate(-90deg);
+	}
+	body.btMenuHorizontal.btMenuRight .menuPort ul li:last-child ul li.on & {
+		transform: rotate(-90deg);
+	}
+	body.btMenuHorizontal.btMenuCenter .rightNav ul ul li.on & {
+		transform: rotate(-90deg);
+	}
+	body.btMenuHorizontal.btMenuCenter.rtl .leftNav ul ul li.on & {
+		transform: rotate(90deg);
+	}
+	body.btMenuHorizontal.btMenuLeft.rtl .menuPort ul li:last-child ul li.on & {
+		transform: rotate(90deg);
+	}
+}
+
+
+.subToggler:before {
+	content: '\f107';
+	font: normal 16px/1 FontAwesome;
+	border-radius: 50%;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	body.btMenuHorizontal .menuPort ul ul li.on & {
+		box-shadow: none !important;
+		background: $(lightBgColor) !important;
+		color: $(lightFontColor) !important;
+	}
+}
+:lightSkinSelector.btMenuHorizontal .on > .subToggler:before {
+	background: $(lightBgColor);
+	box-shadow: 0 0 0 1px $(lightBorderColor);
+}
+:darkSkinSelector.btMenuHorizontal .on > .subToggler:before {
+	background: $(darkBgColor);
+	box-shadow: 0 0 0 1px $(darkBorderColor);
+}
+
+.touch .btMenuHorizontal {
+	.menuPort nav ul li {
+		a {
+			padding-right: 15px;
+		}
+		ul li a {
+			padding-right: 35px;
+		}
+		.subToggler {
+			display: block;
+		}
+		&.btMenuWideDropdown li .btEmptyElement {
+			display: none;
+		}
+	}
+}
+		
+
+/* Horizontal menu, no need for override on responsive */
+
+.btMenuHorizontal {
+	&.btSoftRoundedButtons:not(.btMenuBelowLogo), &.btHardRoundedButtons:not(.btMenuBelowLogo) {
+		.mainHeader.gutter .port .btBelowLogoArea {
+			border-bottom-left-radius: $(softBorderRadius);
+			border-bottom-right-radius: $(softBorderRadius);
+		}
+	}
+	&.btSoftRoundedButtons.btMenuBelowLogo, &.btHardRoundedButtons.btMenuBelowLogo {
+		.mainHeader.gutter .port .btLogoArea {
+			border-bottom-left-radius: $(softBorderRadius);
+			border-bottom-right-radius: $(softBorderRadius);
+		}
+	}
+	&.btAccentLightHeader.btSoftRoundedButtons.btMenuBelowLogo, 
+	&.btAccentDarkHeader.btHardRoundedButtons.btMenuBelowLogo {
+		.mainHeader.gutter .port .btBelowLogoArea {
+			border-radius: $(softBorderRadius);
+		}	
+	}
+	.menuPort {
+		> nav > ul > li {
+			.rtl& {
+				&:last-child {
+					> ul {
+						right: auto;
+						left: 0;
+						> li {
+							text-align: left;
+							> ul {
+								left: $(dropdownWidth)px;
+								right: auto;
+							}	
+						}
+					}
+				}
+			}
+		}
+		ul > li > ul
+		{
+			opacity: 0;
+			.btSinglePostTemplate .btPostImageHolder .btSinglePostTopMetaData .btArticleCategories a {
+				pointer-events: none;
+			}
+		}
+		> nav > ul > li > ul {
+			
+			> li {
+				font-size: .866em;	
+			}
+			
+		}
+		> nav > ul ul {
+			position: absolute;
+			width: $(dropdownWidth)px;
+			right: 0;
+			top: auto;
+			margin: 0 0 0;
+			pointer-events: none;
+			box-shadow: 0 1px 5px 0 rgba(0,0,0,0.25);
+			z-index: 1;
+			padding: 10px 0;
+			font-family: $(bodyFont);
+			li {
+				z-index: 4;
+				float: none;
+			}
+			ul {
+				display: block;
+				top: -10px;
+				margin: 0;
+				pointer-events: none;
+			}
+		}
+
+		> nav > ul ul .bt_bb_wrapper {
+			padding: .6875em 1em;
+			.port {
+				box-shadow: none !important;
+			}
+		}
+
+        > nav > ul li.current-menu-item ul,  > nav >  li.current-menu-ancestor ul {
+			margin: 0;
+		}
+		
+
+		> nav > ul > li {
+			float: left;
+			.rtl& {float: right;}
+			position: relative;
+			z-index: 5;
+		}
+		> nav > ul > li.on > ul {
+			opacity: 1;
+			pointer-events: auto;
+			z-index: 2;
+			.btSinglePostTemplate .btPostImageHolder .btSinglePostTopMetaData .btArticleCategories a {
+				pointer-events: all;
+			}
+		}
+		> nav > ul > li.on > ul > li.on > ul {
+			opacity: 1;
+			pointer-events: auto;
+			z-index: 3;
+		}
+		> nav:not(.leftNav) > ul > li:last-child {
+			margin: 0;
+		}
+	}
+
+}
+
+/* Menu positions */
+
+.btMenuHorizontal {
+	.menuPort ul ul {
+		right: auto;
+		left: 0;
+	}
+	.menuPort ul ul ul {
+		left: $(dropdownWidth)px;
+		right: auto;
+		.rtl& {
+			left: auto;
+			right: $(dropdownWidth)px;			
+		}
+	}
+	.menuPort nav {
+		float: left;
+		padding-left: 50px;
+		.rtl& {
+			padding-right: 50px;
+			padding-left: 0;
+		}
+	}
+}
+
+.btMenuHorizontal.btMenuRight {
+	.menuPort nav {
+		float: right;
+	}
+	.menuPort > nav > ul > li:last-child ul {
+		text-align: right;
+		right: 0;
+		left: auto;
+		li > a {
+			&:before {
+				left: auto;
+				right: -20px;
+			}
+			&:after {
+				right: auto;
+				left: 1em;
+				transform: rotate(180deg);
+			}			
+			&:hover {
+				padding-right: 2.307em;
+				padding-left: .769em;
+				&:before {
+					transform: scaleX(-1);
+				}
+				&:after {
+					right: auto;
+					left: .5em;
+				}
+			}
+		}
+		li.current-menu-item > a {
+			&:before {
+				transform: scaleX(-0.35);
+			}
+			&:hover:before {
+				transform: scaleX(-1);
+			}
+		}
+		.rtl& {
+			left: 0;
+			right: 0;
+			li {
+				text-align: right;
+			}
+			li > a {
+				&:before {
+					left: auto;
+					right: -20px;
+				}
+				&:after {
+					right: auto;
+					left: 1em;
+					transform: rotate(180deg);
+				}			
+				&:hover {
+					padding-right: 2.307em;
+					padding-left: .769em;
+					&:before {
+						transform: scaleX(-1);
+					}
+					&:after {
+						right: auto;
+						left: .5em;
+					}
+				}
+			}
+			li.current-menu-item > a {
+				&:before {
+					transform: scaleX(-0.35);
+				}
+				&:hover:before {
+					transform: scaleX(-1);
+				}
+			}
+		}
+	}
+	.menuPort > nav > ul > li:last-child ul ul {
+		left: -$(dropdownWidth)px;
+		right: auto;
+		.rtl& {
+			left: auto;
+			right: $(dropdownWidth)px;
+		}
+	}
+}
+.btMenuHorizontal.btMenuLeft.rtl {
+	.menuPort > nav > ul > li:last-child ul {
+		text-align: right;
+		left: 0;
+		right: auto;
+		li > a {
+			&:before {
+				right: auto;
+				left: 0;
+			}
+			&:after {
+				left: auto;
+				right: 1em;
+				transform: rotate(0);
+			}			
+			&:hover {
+				padding-left: 2.307em;
+				padding-right: .769em;
+				&:before {
+					transform: scaleX(1);
+				}
+				&:after {
+					left: auto;
+					right: .5em;
+				}
+			}
+		}
+	}
+	.menuPort > nav > ul > li:last-child ul ul {
+		left: $(dropdownWidth)px;
+		right: auto;
+	}
+} 
+
+
+.btMenuHorizontal.btMenuCenter  {
+	.logo {
+		position: relative;
+		z-index: 8;
+		float: left;
+		margin: 0 0 0 50%;
+	}
+	.menuPort nav {
+		float: none;
+	}
+	.menuPort .leftNav {
+		position: absolute;
+		right: 50%;
+		left: auto;
+		padding: 0;
+		ul {
+			float: right;
+		}
+		ul ul {
+			right: auto;
+			left: 0;
+		}
+		 ul ul ul {
+			left: $(dropdownWidth)px;
+			right: auto;
+		}
+		li.btMenuWideDropdown ul ul {
+			left: auto;
+			right: auto;
+			.touch & {
+				left: $(dropdownWidth)px;
+			}
+		}
+	}
+	.menuPort .rightNav {
+		position: absolute;
+		left: 50%;
+		right: auto;
+		padding-left: $(menuPadding)px;
+		ul ul {
+			right: 0;
+			left: auto;
+			li > a {
+				&:before {
+					left: auto;
+					right: -20px;
+				}
+				&:after {
+					right: auto;
+					left: 1em;
+					transform: rotate(180deg);
+				}			
+				&:hover {
+					padding-right: 2.307em;
+					padding-left: .769em;
+					&:before {
+						transform: scaleX(-1);
+					}
+					&:after {
+						right: auto;
+						left: .5em;
+					}
+				}
+			}
+			li.current-menu-item > a {
+				&:before {
+					
+					transform: scaleX(-0.35);
+				}
+				&:hover:before {
+					transform: scaleX(-1);
+				}
+			}
+		}
+		ul ul ul {
+			right: $(dropdownWidth)px;
+			left: auto;
+		}
+		li {
+			text-align: right;
+		}
+		li.btMenuWideDropdown ul ul {
+			left: auto;
+			right: auto;
+			.touch & {
+				right: $(dropdownWidth)px;
+			}
+		}
+	}
+}
+.btMenuHorizontal.btMenuCenter.rtl  {
+	.menuPort .leftNav {
+		ul ul {
+			right: auto;
+			left: 0;
+			li > a {
+				&:before {
+					right: auto;
+					left: 0;
+				}
+				&:after {
+					left: auto;
+					right: 1em;
+					transform: rotate(0);
+				}			
+				&:hover {
+					padding-left: 2.307em;
+					padding-right: .769em;
+					&:before {
+						transform: scaleX(1);
+					}
+					&:after {
+						left: auto;
+						right: .5em;
+					}
+				}
+			}
+		}
+		 ul ul ul {
+			left: $(dropdownWidth)px;
+			right: auto;
+		}
+		li {
+			text-align: left;
+		}
+		li.btMenuWideDropdown ul ul {
+			left: auto;
+			right: auto;
+			.touch & {
+				left: $(dropdownWidth)px;
+			}
+		}
+	}
+	.menuPort .rightNav {
+		position: absolute;
+		left: 50%;
+		right: auto;
+		padding-left: $(menuPadding)px;
+		ul ul {
+			right: 0;
+			left: auto;
+			li > a {
+				&:before {
+					left: auto;
+					right: -20px;
+				}
+				&:after {
+					right: auto;
+					left: 1em;
+					transform: rotate(180deg);
+				}			
+				&:hover {
+					padding-right: 2.307em;
+					padding-left: .769em;
+					&:before {
+						transform: scaleX(-1);
+					}
+					&:after {
+						right: auto;
+						left: .5em;
+					}
+				}
+			}
+		}
+		ul ul ul {
+			right: $(dropdownWidth)px;
+			left: auto;
+		}
+		li {
+			text-align: right;
+		}
+		li.btMenuWideDropdown ul ul {
+			left: auto;
+			right: auto;
+			.touch & {
+				right: $(dropdownWidth)px;
+			}
+		}
+	}
+}
+
+/* Wide menu */
+html:not(.touch) {
+	body.btMenuHorizontal {
+		.menuPort > nav > ul > li.btMenuWideDropdown {
+			position: static;
+			> ul {
+				width: 100%;
+				left: 0;				
+				> li {
+					top: auto;
+					border-top: none !important;
+					float: left;
+					> a {
+						border-top: none !important;
+						font-family: $(headingFont);
+						font-size: 1.077em;
+						font-weight: 700;
+						&:after {
+							content: "" !important;
+							top: auto !important;
+							bottom: 0 !important;
+							right: 1.5538em !important;
+							left: 1.5538em !important;
+							border-bottom: 1px solid $(lightBorderColor) !important;
+						}
+					}
+					> ul > li > ul:before {
+						  display: none;
+					}
+					> ul {
+						opacity: 1;
+						top: auto;
+						margin: 0 !important;
+						width: 100%;
+						right: 0;
+						left: 0;
+						position: relative;
+						box-shadow: none;
+						padding: 0;
+						> li:first-child > a {
+							border-top: none !important;
+						}
+					}
+					> li:not(:last-child) {
+						border-left: 1px solid $(lightBorderColor);
+					}
+					ul:before {
+						display: none;
+					}
+				}
+
+			}
+			> li {
+				width: 100%;
+			}
+			> li  .sub-menu {
+				width: 100%;
+			}
+		}
+		.menuPort > nav > ul > li.btMenuWideDropdown.on > ul > li > ul {
+			pointer-events: auto;
+		}
+	}
+	
+	body.btMenuCenter.btMenuHorizontal .menuPort > nav.rightNav > ul > li.btMenuWideDropdown > ul {
+		width: 300%;
+		left: -200%;
+	}
+	
+	body.btMenuCenter.btMenuHorizontal .menuPort > nav.leftNav > ul > li.btMenuWideDropdown > ul {
+		width: 300%;
+		right: -200%;
+	}
+
+	@for i in range(0, 20) {
+		body.btMenuHorizontal .mainHeader li.btMenuWideDropdown.btMenuWideDropdownCols-#(i) {
+			> ul > li { 
+				width: math( 100/#(i), % ) !important;
+			}	
+		}
+	}	
+
+}
+@media (min-width: 1024px) {
+	html.touch {
+		body.btMenuHorizontal {
+			.menuPort > nav > ul > li.btMenuWideDropdown {
+				position: static;
+				> ul {
+					width: 100%;
+					left: 0;				
+					> li {
+						top: auto;
+						border-top: none !important;
+						float: left;
+						> a {
+							border-top: none !important;
+							font-family: $(headingFont);
+							font-size: 1.077em;
+							font-weight: 700;
+							&:after {
+								content: "" !important;
+								top: auto !important;
+								bottom: 0 !important;
+								right: 1.5538em !important;
+								left: 1.5538em !important;
+								border-bottom: 1px solid $(lightBorderColor) !important;
+							}
+						}
+						> ul > li > ul:before {
+							  display: none;
+						}
+						> ul {
+							opacity: 1;
+							top: auto;
+							margin: 0 !important;
+							width: 100%;
+							right: 0;
+							left: 0;
+							position: relative;
+							box-shadow: none;
+							padding: 0;
+							> li:first-child > a {
+								border-top: none !important;
+							}
+						}
+						> li:not(:last-child) {
+							border-left: 1px solid $(lightBorderColor);
+						}
+						ul:before {
+							display: none;
+						}
+					}
+
+				}
+				> li {
+					width: 100%;
+				}
+				> li  .sub-menu {
+					width: 100%;
+				}
+			}
+			.menuPort > nav > ul > li.btMenuWideDropdown.on > ul > li > ul {
+				pointer-events: auto;
+			}
+		}
+		
+		body.btMenuCenter.btMenuHorizontal .menuPort > nav.rightNav > ul > li.btMenuWideDropdown > ul {
+			width: 300%;
+			left: -200%;
+		}
+		
+		body.btMenuCenter.btMenuHorizontal .menuPort > nav.leftNav > ul > li.btMenuWideDropdown > ul {
+			width: 300%;
+			right: -200%;
+		}
+
+		@for i in range(0, 20) {
+			body.btMenuHorizontal .mainHeader li.btMenuWideDropdown.btMenuWideDropdownCols-#(i) {
+				> ul > li { 
+					width: math( 100/#(i), % ) !important;
+				}	
+			}
+		}	
+		body.btMenuHorizontal {
+			.menuPort > nav > ul {
+				li.btMenuWideDropdown .subToggler {
+				    position: relative;
+					float: right;
+					margin: 0 0 -$(logoHeight)px 0;
+				}
+				li.btMenuWideDropdown ul li .subToggler, li.btMenuWideDropdown .btCustomMenu .subToggler {
+					display: none;
+				}
+			}
+		}
+		body.btMenuHorizontal.btMenuBelowLogo {
+		.menuPort > nav > ul {
+				li.btMenuWideDropdown .subToggler {
+					margin: 0 0 -math($(belowLogoMenuHeight)-8)px 0;
+				}
+			}
+		}
+		body.btMenuCenter.btMenuHorizontal .menuPort > nav.rightNav > ul > li.btMenuWideDropdown > ul {
+			li.btMenuWideDropdown .subToggler {
+				float: left;
+			}
+		}
+		
+		body.btMenuCenter.btMenuHorizontal .menuPort > nav.leftNav > ul > li.btMenuWideDropdown > ul {
+			li.btMenuWideDropdown .subToggler {
+				float: right;
+			}
+		}
+	}
+}
+
+/* Top bar */
+
+.topBar {
+	visibility: hidden;
+}
+
+.btMenuHorizontal {
+	.topBar {
+		font-size: 0.8125em;
+		line-height: 2.461em;
+		padding: 0.2em 0 0.3em;
+		z-index: 2;
+		.topBarPort {
+			display: flex;
+		} 
+		.topBarPort:after, .topBarPort:before {
+			display: none;
+		}
+	}
+	.topBarInMenu {
+		line-height: inherit;
+		float: right;
+		display: table;
+		height: math($(logoHeight)*2.12)px;
+		margin-left: $(menuPadding)px;
+		font-size: .866em;
+		.rtl& {
+			float: left;
+			margin-left: 0;
+			margin-right: $(menuPadding)px;
+		}
+		.btMenuCenter.rtl& {
+			float: right;
+			margin-left: $(menuPadding)px;
+			margin-right: 0;
+		}
+		.topBarInMenuCell {
+			line-height: math($(belowLogoMenuHeight) - 18)px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+	.btBelowLogoArea .topBarInMenu {
+		height: $(belowLogoMenuHeight)px;
+	}
+}
+.btMenuHorizontal:not(.btMenuBelowLogo) {
+	.menuPort nav {
+		margin-top: math(($(logoHeight)*2.12-$(logoHeight))/2)px;
+		margin-bottom: math(($(logoHeight)*2.12-$(logoHeight))/2)px;
+	}
+}
+/* Menu bellow logo */
+
+.btMenuHorizontal.btMenuBelowLogo {
+	.btBelowLogoArea {
+		padding: 0px 0;
+		:not(.btAccentLightHeader):not(.btAccentDarkHeader):not(.btLightHeader)&{
+			:darkSkinSelector& {
+				border-top: 1px solid $(darkBorderColor);
+			}
+			:lightSkinSelector& {
+				border-top: 1px solid $(lightBorderColor);
+			}
+		}
+		z-index: 0;
+	}
+	.menuPort {
+		height: $(logoHeight)px;
+		clear: both;
+		position: relative;
+		margin: 0;
+		float: none;
+		nav {
+			padding: 4px 0;
+		}
+	}
+}
+
+:darkSkinSelector .btBelowLogoArea {
+	border-color: $(darkBorderColor) !important;
+}
+:lightSkinSelector .btBelowLogoArea {
+	border-color: $(lightBorderColor) !important;
+}
+
+/* Header styles */
+
+.btAccentDarkHeader.btMenuHorizontal, .btLightAccentHeader.btMenuHorizontal, .btAccentLightHeader.btMenuHorizontal, .btLightHeader.btMenuHorizontal {
+	:not(.btStickyHeaderActive)& .btLogoArea {
+	}
+	&:not(.btBelowMenu) {
+		.mainHeader {
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+		}	
+	}
+}
+
+.btAccentLightHeader.btMenuHorizontal {
+	.btBelowLogoArea, .topBar {
+		position: relative;
+		.btLightSkin&,.btDarkSkin& {
+			.menuPort > nav > ul > li {
+				> :any(a,.bt_mega_menu_title) {color: $(darkFontColor);}
+				> :any(a,.bt_mega_menu_title):hover {color: $(darkFontColor) !important; background: $(darkBorderColorShaded) !important;}
+				&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(lightFontColor) !important;}
+				&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColorShaded) !important;}
+			}
+		}
+		.topBarInMenu {
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIconWidgetContent {
+					color: $(darkFontColor);
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					opacity: 0.5;
+				}
+			}
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					opacity: 1;
+				}
+			}
+			.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+				}
+			}
+			.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			a.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					box-shadow: 0 0 0 0 $(darkBorderColorShaded) inset;
+				}
+			}
+			a.btIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(darkBorderColorShaded) inset;
+					opacity: 1;
+				}
+			}
+			/* Cart & Accent hover */
+			a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(accentColor) !important;
+					box-shadow: 0 0 0 1.5em $(darkFontColor) inset;
+				}
+			}
+			.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+				color: $(accentColor) !important;
+				box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+			}
+			/* Search */
+			.btSearch .btIco {
+				a:before {
+					background: transparent !important;
+					box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+					color: $(darkFontColor) !important;
+				}
+				a:hover:before {
+					box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+					color: $(accentColor) !important;
+				}
+			}
+		}
+	}
+	.topTools {
+		:any(span,a).btIconWidget.btAccentIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+			}
+		}
+		:any(span,a).btIconWidget {
+			.btIconWidgetContent {
+				color: $(darkFontColor);
+			}
+		}
+		:any(span,a).btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 0 $(darkFontColor) inset;
+				opacity: 0.5;
+			}
+		}
+		:any(span,a).btIconWidget.btAccentIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 0 $(darkFontColor) inset;
+				opacity: 1;
+			}
+		}
+		.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 0 $(darkFontColor) inset;
+			}
+		}
+		.btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+			}
+		}
+		a.btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				box-shadow: 0 0 0 0 $(darkBorderColorShaded) inset;
+			}
+		}
+		a.btIconWidget:hover {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 1.5em $(darkBorderColorShaded) inset;
+				opacity: 1;
+			}
+		}
+		/* Cart & Accent hover */
+		a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(accentColor) !important;
+				box-shadow: 0 0 0 1.5em $(darkFontColor) inset;
+			}
+		}
+		.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+			color: $(accentColor) !important;
+			box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+		}
+		/* Search */
+		.btSearch .btIco {
+			a:before {
+				background: transparent !important;
+				box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+				color: $(darkFontColor)!important;
+			}
+			a:hover:before {
+				box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+				color: $(accentColor)!important;
+			}
+		}
+	}
+}
+
+/* Accent light */
+
+.btAccentLightHeader.btMenuHorizontal:not(.btBelowMenu), .btAccentLightHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(lightBgColor);
+	}	
+	.btBelowLogoArea, .topBar {
+		background-color: $(accentColor);
+		&:before {
+			display: block;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -2000em;
+			right: -2000em;
+			background-color: $(accentColor);
+		}
+		&:after {
+			content: ' ';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+	}
+}
+
+.btAccentLightHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		background-color: transparent;
+		.btBelowLogoArea, .topBar {
+			background-color: $(accentColor);
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		.btBelowLogoArea {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+		}
+	}	
+
+}
+
+/* Light */
+
+.btLightHeader.btMenuHorizontal {
+	&.btMenuBelowLogo {
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			.btLightSkin&,.btDarkSkin& {
+				.menuPort > nav > ul > li {
+					> :any(a,.bt_mega_menu_title) {color: $(darkFontColor);}
+					> :any(a,.bt_mega_menu_title):hover {color: $(darkFontColor) !important; background: $(darkBorderColor) !important;}
+					&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(accentColor) !important;}
+					&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColor) !important;}
+				}
+			}
+		}
+		.mainHeader {
+			.topBarInMenu {
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIconWidgetContent {
+						color: $(darkFontColor);
+					}
+				}
+				a:hover.btIconWidget {
+					.btIconWidgetContent {
+						color: $(accentColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(accentColor) inset;
+					}
+				}
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(accentColor);
+						box-shadow: 0 0 0 0 $(accentColor) inset;
+					}
+				}
+				.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					}
+				}
+				.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				a.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+					}
+				}
+				a.btIconWidget:hover {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 1.5em $(darkBorderColor) inset;
+					}
+				}
+				/* Cart & Accent hover */
+				a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor) !important;
+						box-shadow: 0 0 0 1.5em $(accentColor) inset;
+					}
+				}
+				.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+					color: $(darkFontColor) !important;
+					box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+				}
+				/* Search */
+				.btSearch .btIco {
+					a:before {
+						background: transparent !important;
+						box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+						color: $(darkFontColor)!important;
+					}
+					a:hover:before {
+						box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+						color: $(darkFontColor)!important;
+					}
+				}
+			}
+		}
+	}
+	.mainHeader .topTools {
+		.btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+			}
+		}
+	}
+	.topTools {
+		.btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+			}
+		}
+		a.btIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+			}
+		}
+		:any(span,a).btIconWidget {
+			.btIconWidgetContent {
+				color: $(darkFontColor);
+				transition: 300ms ease all;
+			}
+		}
+		a:hover.btIconWidget {
+			.btIconWidgetContent {
+				color: $(accentColor);
+				transition: 300ms ease all;
+			}
+		}
+		:any(span,a).btIconWidget.btAccentIconWidget {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(accentColor);
+			}
+		}
+		a.btIconWidget:hover {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 1.5em $(darkBorderColor) inset;
+			}
+		}
+		a.btIconWidget.btAccentIconWidget:hover {
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+				color: $(darkFontColor);
+				box-shadow: 0 0 0 1.5em $(accentColor) inset;
+			}
+		}
+		/* Search */
+		.btSearch .btIco {
+			a:before {
+				background: transparent !important;
+				box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+				color: $(darkFontColor)!important;
+			}
+			a:hover:before {
+				box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+				color: $(darkFontColor)!important;
+			}
+		}
+	}
+}
+
+.btLightHeader.btMenuHorizontal:not(.btBelowMenu), .btLightHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(lightBgColor);
+	}	
+	.btBelowLogoArea, .topBar {
+		background-color: $(darkBgColor);
+		&:before {
+			display: block;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -2000em;
+			right: -2000em;
+			background-color: $(darkBgColor);
+			border-top: 1px solid $(lightBorderColor);
+		}
+		&:after {
+			content: ' ';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+	}
+}
+
+.btLightHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		background-color: transparent;
+		.btBelowLogoArea, .topBar {
+			background-color: $(darkBgColor);
+			padding-left: $(pagePadding)px;
+			padding-right: $(pagePadding)px;
+		}
+		.btBelowLogoArea {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+		}
+	}	
+
+}
+
+/* Accent dark */
+
+.btAccentDarkHeader.btMenuHorizontal {
+	.mainHeader {
+		.btLightSkin&,.btDarkSkin& {
+			color: $(darkFontColor);
+			.menuPort > nav > ul > li {
+				> :any(a,.bt_mega_menu_title) {color: $(darkFontColor);}
+				> :any(a,.bt_mega_menu_title):hover {color: $(darkFontColor) !important; background: $(darkBorderColorShaded) !important;}
+				&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(lightFontColor) !important;}
+				&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColorShaded) !important;}
+			}
+		}
+		.topTools {
+			.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			a.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIconWidgetContent {
+					color: $(darkFontColor);
+					transition: 300ms ease all;
+				}
+			}
+			a:hover.btIconWidget {
+				.btIconWidgetContent {
+					color: $(accentColor);
+					transition: 300ms ease all;
+				}
+			}
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(accentColor);
+				}
+			}
+			a.btIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(darkBorderColor) inset;
+				}
+			}
+			a.btIconWidget.btAccentIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(accentColor) inset;
+				}
+			}
+			/* Search */
+			.btSearch .btIco {
+				a:before {
+					background: transparent !important;
+					box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+					color: $(darkFontColor)!important;
+				}
+				a:hover:before {
+					box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+					color: $(darkFontColor)!important;
+				}
+			}
+		}
+	}
+	&.btMenuBelowLogo {
+		.mainHeader {
+			.btLightSkin&,.btDarkSkin& {
+				.menuPort > nav > ul > li {
+					> :any(a,.bt_mega_menu_title):hover {background: $(darkBorderColor) !important;}
+					&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(accentColor) !important;}
+					&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColor) !important;}
+				}
+			}
+			.topBarInMenu {
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIconWidgetContent {
+						color: $(darkFontColor);
+					}
+				}
+				a:hover.btIconWidget {
+					.btIconWidgetContent {
+						color: $(accentColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(accentColor) inset;
+					}
+				}
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(accentColor);
+						box-shadow: 0 0 0 0 $(accentColor) inset;
+					}
+				}
+				.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					}
+				}
+				.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				a.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+					}
+				}
+				a.btIconWidget:hover {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 1.5em $(darkBorderColor) inset;
+					}
+				}
+				/* Cart & Accent hover */
+				a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor) !important;
+						box-shadow: 0 0 0 1.5em $(accentColor) inset;
+					}
+				}
+				.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+					color: $(darkFontColor) !important;
+					box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+				}
+				/* Search */
+				.btSearch .btIco {
+					a:before {
+						background: transparent !important;
+						box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+						color: $(darkFontColor)!important;
+					}
+					a:hover:before {
+						box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+						color: $(darkFontColor)!important;
+					}
+				}
+			}
+		}
+	}
+	&:not(.btMenuBelowLogo) {
+		.mainHeader {
+			.topBarInMenu {
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIconWidgetContent {
+						color: $(darkFontColor);
+					}
+				}
+				:any(span,a).btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(darkFontColor) inset;
+						opacity: 0.5;
+					}
+				}
+				:any(span,a).btIconWidget.btAccentIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(darkFontColor) inset;
+						opacity: 1;
+					}
+				}
+				.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					}
+				}
+				.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+					}
+				}
+				a.btIconWidget {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						box-shadow: 0 0 0 0 $(darkBorderColorShaded) inset;
+					}
+				}
+				a.btIconWidget:hover {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(darkFontColor);
+						box-shadow: 0 0 0 1.5em $(darkBorderColorShaded) inset;
+						opacity: 1;
+					}
+				}
+				/* Cart & Accent hover */
+				a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+					.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+						color: $(accentColor) !important;
+						box-shadow: 0 0 0 1.5em $(darkFontColor) inset;
+					}
+				}
+				.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+					color: $(accentColor) !important;
+					box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+				}
+				/* Search */
+				.btSearch .btIco {
+					a:before {
+						background: transparent !important;
+						box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+						color: $(darkFontColor)!important;
+					}
+					a:hover:before {
+						box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+						color: $(accentColor)!important;
+					}
+				}
+			}
+		}
+	}
+} 
+
+.btAccentDarkHeader.btMenuHorizontal:not(.btBelowMenu), .btAccentDarkHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(accentColor);
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			background-color: $(darkBgColor);
+			.btLightSkin&,.btDarkSkin& {
+				border-color: rgba(255,255,255,0.35) !important;
+			} 
+			&:before {
+				display: block;
+				content: ' ';
+				position: absolute;
+				top: -1px;
+				bottom: 0;
+				left: -2000em;
+				right: -2000em;
+				background-color: $(darkBgColor);
+				border-top: 1px solid $(lightBorderColor);
+			}
+			&:after {
+				content: ' ';
+				display: table;
+				width: 100%;
+				clear: both;
+			}
+		}
+	}
+}
+
+.btAccentDarkHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		.port {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);	
+			.btLogoArea {
+				background-color: $(accentColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;	
+			}
+			.btBelowLogoArea, .topBar {
+				background-color: $(darkBgColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}
+		}
+		
+	}	
+}  
+
+/* Light accent */
+
+.btLightAccentHeader.btMenuHorizontal:not(.btMenuBelowLogo):not(.btStickyHeaderActive) {
+	.mainHeader {
+		.btLightSkin&,.btDarkSkin& {
+			.btLogoArea {
+				color: $(darkFontColor);
+				.menuPort > nav > ul > li {
+					> :any(a,.bt_mega_menu_title) {color: $(darkFontColor);}
+					> :any(a,.bt_mega_menu_title):hover {color: $(darkFontColor) !important; background: $(darkBorderColorShaded) !important;}
+					&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(lightFontColor) !important;}
+					&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColorShaded) !important;}
+				}	
+			}
+		}
+		.topBarInMenu {
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIconWidgetContent {
+					color: $(darkFontColor);
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					opacity: 0.5;
+				}
+			}
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+					opacity: 1;
+				}
+			}
+			.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkFontColor) inset;
+				}
+			}
+			.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			a.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					box-shadow: 0 0 0 0 $(darkBorderColorShaded) inset;
+				}
+			}
+			a.btIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(darkBorderColorShaded) inset;
+					opacity: 1;
+				}
+			}
+			/* Cart & Accent hover */
+			a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(accentColor) !important;
+					box-shadow: 0 0 0 1.5em $(darkFontColor) inset;
+				}
+			}
+			.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+				color: $(accentColor) !important;
+				box-shadow: 0 0 0 1.5em $(darkFontColor) inset !important;
+			}
+			/* Search */
+			.btSearch .btIco {
+				a:before {
+					background: transparent;
+					box-shadow: 0 0 0 1px $(darkFontColor) inset;
+					color: $(darkFontColor);
+				}
+				a:hover:before {
+					box-shadow: 0 0 0 1.5em $(darkFontColor) inset;
+					color: $(accentColor);
+				}
+			}
+		}
+	}
+} 
+
+.btLightAccentHeader.btMenuHorizontal:not(.btBelowMenu), .btLightAccentHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(accentColor);
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			background-color: $(lightBgColor);
+			&:before {
+				display: block;
+				content: ' ';
+				position: absolute;
+				top: -1px;
+				bottom: 0;
+				left: -2000em;
+				right: -2000em;
+				background-color: $(lightBgColor);
+				border-top: 1px solid $(lightBorderColor);
+				z-index: -1;
+			}
+			&:after {
+				content: ' ';
+				display: table;
+				width: 100%;
+				clear: both;
+			}
+		}
+	}
+}
+
+.btLightAccentHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		.port {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);	
+			.btLogoArea {
+				background-color: $(accentColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;	
+			}
+			.btBelowLogoArea, .topBar {
+				background-color: $(lightBgColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}
+		}
+		
+	}	
+}
+
+/* Black Header */
+.btBlackHeader.btMenuHorizontal {
+	.mainHeader {
+		.btLightSkin&,.btDarkSkin& {
+			color: $(darkFontColor);
+			.menuPort > nav > ul > li {
+				> :any(a,.bt_mega_menu_title) {color: $(darkFontColor);}
+				> :any(a,.bt_mega_menu_title):hover {background: $(darkBorderColor) !important;}
+				&:any(.current-menu-item,.current-menu-ancestor,.current-page-ancestor) > :any(a,.bt_mega_menu_title) {color: $(accentColor) !important;}
+				&.on > :any(a,.bt_mega_menu_title) {background: $(darkBorderColor) !important;}
+			}
+		}
+		.topTools, .topBarInMenu {
+			.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+				}
+			}
+			a.btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIconWidgetContent {
+					color: $(darkFontColor);
+					transition: 300ms ease all;
+				}
+			}
+			a:hover.btIconWidget {
+				.btIconWidgetContent {
+					color: $(accentColor);
+					transition: 300ms ease all;
+				}
+			}
+			:any(span,a).btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(darkBorderColor) inset;
+				}
+			}
+			:any(span,a).btIconWidget.btAccentIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(accentColor);
+					box-shadow: 0 0 0 0 $(accentColor) inset;
+				}
+			}
+			a.btIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(darkBorderColor) inset;
+				}
+			}
+			a.btIconWidget.btAccentIconWidget:hover {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 1.5em $(accentColor) inset;
+				}
+			}
+			/* Cart & Accent hover */
+			a.btIconWidget.btAccentIconWidget:hover, .widget_shopping_cart .widget_shopping_cart_content.on {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor) !important;
+					box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+				}
+			}
+			.widget_shopping_cart .btIco:hover .btIcoHolder:before {
+				color: $(darkFontColor) !important;
+				box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+			}
+			.widget_shopping_cart .widget_shopping_cart_content .btIconWidget {
+				.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder:before {
+					color: $(darkFontColor);
+					box-shadow: 0 0 0 0 $(accentColor) inset;
+				}
+			}
+			/* Search */
+			.btSearch .btIco {
+				a:before {
+					background: transparent !important;
+					box-shadow: 0 0 0 1px $(darkFontColor) inset !important;
+					color: $(darkFontColor)!important;
+				}
+				a:hover:before {
+					box-shadow: 0 0 0 1.5em $(accentColor) inset !important;
+					color: $(darkFontColor)!important;
+				}
+			}
+		}
+	}
+} 
+
+.btBlackHeader.btMenuHorizontal:not(.btBelowMenu), .btBlackHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: #000;
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			background-color: #000;
+			.btLightSkin&,.btDarkSkin& {
+				border-color: $(darkBorderColor) !important;
+			} 
+		}
+		.topBar:before {
+			display: block;
+			content: ' ';
+			position: absolute;
+			top: -1px;
+			bottom: 0;
+			left: -2000em;
+			right: -2000em;
+			box-shadow: 0 0 20px rgba(255,255,255,.1);
+		}
+	}
+}
+
+.btBlackHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		.port {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);	
+			.btLogoArea {
+				background-color: $(accentColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;	
+			}
+			.btBelowLogoArea, .topBar {
+				background-color: $(darkBgColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}
+			.btLightSkin&,.btDarkSkin& {
+				.btBelowLogoArea {
+					border-top: 1px solid $(darkBorderColor) !important;
+				}
+			}
+		}
+		
+	}	
+}  
+
+
+/* Sticky */
+
+.logoBelowInline {
+	display: none;
+}
+body.btMenuHorizontal.btStickyHeaderActive .mainHeader {
+	position: fixed;
+	transform: translateY(-100%);
+	.topBar {
+		display: none;
+	}
+	.btBelowLogoArea {
+		padding: 0;
+		border-top: 0 !important;
+	}
+	.btLogoArea {
+		.logo img {
+			height: math($(logoHeight)*0.6)px;
+		}	
+		.btTextLogo {
+			font-size: 1.5em;
+			line-height: math($(logoHeight)*0.6)px;
+		}
+		.menuPort nav>ul>li>a {
+			line-height: math($(logoHeight)*0.6)px;
+		}
+		.topBarInMenu {
+			height: math($(logoHeight)*0.6)px;
+		}
+	}
+}
+body.btMenuHorizontal.btStickyHeaderActive .mainHeader {
+	.logoBelowInline {
+		line-height: 0;
+		display: block;
+		float: left;
+		margin: math($(logoHeight)*0.2)px $(innerHorizontalPadding)px math($(logoHeight)*0.2)px 0;
+		img {
+			height: math($(logoHeight)*0.6)px;
+		}
+	}
+}
+body.rtl.btMenuHorizontal.btStickyHeaderActive .mainHeader {
+	.logoBelowInline {
+		float: right;
+		margin: math($(logoHeight)*0.2)px 0 math($(logoHeight)*0.2)px $(innerHorizontalPadding)px;
+	}
+}
+
+body.btMenuHorizontal.btStickyHeaderActive.btMenuBelowLogo .mainHeader {
+	.btLogoArea {
+		display: none;
+	}
+}
+body.btMenuHorizontal.btStickyHeaderActive:not(.btMenuBelowLogo) .mainHeader {
+	.logo {
+		margin: math($(logoHeight)*0.2)px $(innerHorizontalPadding)px math($(logoHeight)*0.2)px 0;
+		padding: 0;
+	}
+	.menuPort nav {
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding-left: 0;
+		&>ul>li>a, &>ul>li>.bt_mega_menu_title {
+			line-height: math($(logoHeight)*0.84)px;
+		}
+	}
+	.btLogoArea .topBarInMenu {
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding-left: 0;
+		height: math($(logoHeight)*0.84)px;
+	}
+}
+body.rtl.btMenuHorizontal.btStickyHeaderActive:not(.btMenuBelowLogo) .mainHeader {
+	.logo {
+		margin: math($(logoHeight)*0.2)px 0 math($(logoHeight)*0.2)px $(innerHorizontalPadding)px;
+	}
+	.menuPort nav {
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding-right: 0;
+		float: right;
+		&>ul>li>a {
+			line-height: math($(logoHeight)*0.84)px;
+		}
+	}
+	.btLogoArea .topBarInMenu {
+		margin-top: 4px;
+		margin-bottom: 4px;
+		padding-right: 0;
+		height: math($(logoHeight)*0.84)px;
+	}
+}
+
+
+body.btMenuHorizontal.btStickyHeaderActive.btDarkSkin:not(.btAccentDarkHeader) .mainHeader {
+	background-color: hsla-adjust( $(darkBgColor) 0 0 0 -10 );
+}
+body.btMenuHorizontal.btStickyHeaderActive.btLightSkin:not(.btAccentDarkHeader) .mainHeader {
+	background-color: hsla-adjust( $(lightBgColor) 0 0 0 -10 );
+}
+body.btMenuHorizontal.btStickyHeaderActive.btBlackHeader .mainHeader {
+	background-color: rgba(0,0,0,.9) !important;
+	.btBelowLogoArea {
+		background: transparent;
+	}
+}
+
+body.btMenuHorizontal.btStickyHeaderActive.btStickyHeaderOpen .mainHeader {
+	transition: transform 0.5s ease-out-quint;
+	transform: translateY(0);
+}
+
+/* Hide menu */
+
+body.btMenuHorizontal.btHideMenu {
+	.btHorizontalMenuTrigger {
+		display: block;
+	}
+	.menuPort {
+		opacity: 0;
+		transition: opacity 1s ease;
+		pointer-events: none;
+	}
+	
+}
+
+.btShowMenu .menuPort {
+	opacity: 1 !important;
+	pointer-events: all !important;
+}
+
+/* Vertical and responsive menu */
+
+.btVerticalMenuTrigger {
+	cursor: pointer;
+	margin: math($(logoHeight)*0.62)px 0;
+	display: none;
+	position: relative;
+	z-index: 1;
+	width: 32px;
+	height: 24px;
+	&:before, &:after {
+		position: absolute;
+		border-top: 2px solid $(lightFontColor);
+		top: 0;
+		left: 0;
+		right: 0;
+		content: "";
+		transform-origin: left top;
+		transition: 300ms ease all;
+		:lightSkinSelector & {
+			border-color: $(lightFontColor);
+		}
+		:darkSkinSelector & {
+			border-color: $(darkFontColor);
+		}
+	}
+	&:after {
+		top: auto;
+		bottom: 0;
+		transform-origin: left bottom;
+	}
+	.btIco {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		margin-top: -1px !important;
+		border-top: 2px solid $(lightFontColor);
+		opacity: 1;
+		:lightSkinSelector & {
+			border-color: $(lightFontColor);
+		}
+		:darkSkinSelector & {
+			border-color: $(darkFontColor);
+		}
+	}
+	.btIco.btIcoDefaultType	{
+		margin: 0;
+		.btIcoHolder:before {
+			display: none;
+		}
+	}
+	.btMenuVerticalOn & {
+		margin-left: -10px;
+		&:before {
+			transition: 300ms ease all;
+			transform: rotate(45deg);
+			left: 5px;
+			width: 100%;
+		}
+		&:after {
+			transition: 300ms ease all;
+			transform: rotate(-45deg);
+			left: 5px;
+			width: 100%;
+		}
+		.btIco {
+			left: 50%;
+			right: 50%;
+			opacity: 0;
+		}
+	}
+	&:hover {
+		&:before, &:after {
+			border-color: $(accentColor);
+		}
+		.btIco {
+			border-color: $(accentColor);
+		}
+	}
+	.btMenuVerticalOn.rtl & {
+		margin-left: 0;
+		margin-right: -10px;
+	}
+	.btLightAccentHeader &, .btLightAccentHeader.btMenuVerticalOn &, .btBlackHeader &, .btBlackHeader.btMenuVerticalOn &, .btAccentDarkHeader &, .btAccentDarkHeader.btMenuVerticalOn & {
+		&:before, &:after {
+			border-color: $(darkFontColor);
+		}
+		.btIco {
+			border-color: $(darkFontColor);
+		}
+		&:hover {
+			&:hover {
+				&:before, &:after {
+					border-color: $(alternateColor);
+				}
+				.btIco {
+					border-color: $(alternateColor);
+				}
+			}
+		}
+	}
+}
+
+.btMenuVertical {
+	> .menuPort {
+		text-align: center;
+		height: 100%;
+		top: 0;
+		bottom: 0;
+		position: fixed;
+		width: $(verticalMenuWidth)px;
+		clear: both;
+		transition: transform 1s ease-out-quint;
+		z-index: 101;
+		overflow: hidden;
+		padding: 0;
+		box-shadow: none;
+		.touch & {
+			overflow: auto;	
+		}
+		.btMainLogo {
+			display: block !important;
+		}
+		.btAltLogo {
+			display: none !important;
+		}
+		.logo {
+			float: none;
+			margin: 0;
+			padding: math(($(logoHeight)*0.8*2.15-$(logoHeight)*0.8)/2)px 2em;
+			box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
+			.btAccentDarkHeader&, .btLightAccentHeader& {
+				background-color: $(accentColor);
+			}
+			.btBlackHeader& {
+				background-color: #000;
+			}
+			img {
+				margin: 0 auto;
+				display: block;
+				height: auto;
+				max-width: 100%;
+			}
+		}
+		.btCloseVertical {
+			display: none;
+		}
+		nav {
+			margin: 0;
+			ul {
+				transition: none;
+				li {
+					padding: 0;
+					position: relative;
+					background-color: transparent;
+					> a {
+						line-height: 1.1;
+						padding: $(innerHorizontalPadding)px 2em;
+						border: none;
+						font-weight: 400;
+					}
+				}
+				li:not(.current-menu-ancestor) > ul {
+					display: none;
+				}
+				ul li {
+					font-family: $(bodyFont);
+					padding: 0;
+					opacity: 1;
+					border: none;
+					background-color: transparent;
+					font-size: .866em;
+					ul {
+						opacity: 0.7;
+						li {
+							font-size: 1em;
+						}
+						li a {
+							border: none !important;
+						}
+					}
+					
+				}
+			}
+			:any(li.current-menu-ancestor, li.current-menu-item) > a {
+				font-weight: 600;
+			}	
+		}
+	}
+	.btVerticalMenuTrigger {
+		display: block;		
+	}
+	.menuScrollPort {
+		width: $(verticalMenuWidth)px;
+		overflow: hidden;
+	}
+	.bt_mega_menu_content {
+		.rowItem {
+			width: 100% !important;
+			padding: 0 !important;
+		}
+		font-family: $(bodyFont);
+		ul {
+			li {
+				font-size: 1em !important;
+			}
+		}
+		.btCustomMenu {
+			width: 100%;
+			ul {
+				li {
+					font-size: 1em !important;
+					a {
+						text-align: center;
+					}
+				}
+			}
+			.subToggler  {
+				display: none !important;
+			}
+		}
+	}	
+}
+
+
+.btMenuVerticalRight {
+	> .menuPort {
+		right: 0;
+		box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+		transform: translateX(100%);
+	}
+	.btVerticalMenuTrigger {
+		float: right;		
+	}
+}
+
+.btMenuVerticalLeft {
+	> .menuPort {
+		left: 0;
+		box-shadow: 2px 0 5px rgba(0,0,0,.10);
+		transform: translateX(-100%);
+		.rtl& {
+			transform: translateX(100%);
+			left: auto;
+			right: 0;
+			.btMenuVerticalOn& {
+				transform: translateX(0);
+			}
+		}
+	}
+	.btVerticalMenuTrigger {
+		float: left;
+		.rtl& {
+			float: right;
+		}
+	}
+}
+
+.btMenuVertical.admin-bar > .menuPort {
+	padding-top: 32px;
+}
+
+@media (min-width: $(baseTemplateWidth)px) {
+
+	.btMenuVerticalRight {
+		> .menuPort {
+			transform: translateX(0%);
+		}
+	}
+
+	.btMenuVerticalLeft {
+		> .menuPort {
+			transform: translateX(0%);
+		}
+	}
+
+	.btMenuVertical .menuPort, .btMenuVertical.btMenuVerticalOn .menuPort {
+		transform: translate3d(0,0,0);
+	}
+
+	.btMenuVerticalLeft.btHideMenu .menuPort {
+		transform: translate3d(-$(verticalMenuWidth)px,0,0);
+	}
+	.btMenuVerticalRight.btHideMenu .menuPort {
+		transform: translate3d($(verticalMenuWidth)px,0,0);
+	}
+
+	.btMenuVerticalLeft.btHideMenu.btMenuVerticalOn > .menuPort {
+		transform: translate3d(0,0,0);
+	}
+	.btMenuVerticalRight.btHideMenu.btMenuVerticalOn .menuPort {
+		transform: translate3d(0,0,0);
+	}
+
+	.btMenuVertical.btMenuGutter .mainHeader {
+		display: none;
+	}
+
+	.btMenuVertical.btMenuGutter.btHideMenu .mainHeader {
+		display: block;
+	}
+
+	.btMenuVertical.btBelowMenu .btContentWrap {
+		padding: 0 !important;
+	}
+
+	.btMenuVertical .gutter .port,
+	.btMenuVerticalLeftOn.btMenuGutter .mainHeader .topBarPort,
+	.btMenuVerticalRightOn.btMenuGutter .mainHeader .topBarPort {
+		padding-left: $(pagePadding)px;
+		padding-right: $(pagePadding)px;
+	}
+
+    .btMenuVerticalOn .btVerticalMenuTrigger .btIco a:before {
+		color: $(accentColor) !important;
+	}
+
+	.btMenuVertical .btLogoArea .btVerticalMenuTrigger{
+		display: none;
+	}
+
+	.btMenuVertical:not(.btHideMenu) {
+		.btLogoArea .logo, .btCloseVertical {
+			display: none;
+		}	
+	}
+
+	.btMenuVertical.btHideMenu .btLogoArea .btVerticalMenuTrigger {
+		display: block;
+	}
+
+	.btMenuVerticalLeft .btPageWrap, .btMenuVerticalLeft.btMenuVerticalOn .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0 0 0 $(verticalMenuWidth)px;
+	}
+
+	.btMenuVerticalRight .btPageWrap, .btMenuVerticalRight.btMenuVerticalOn .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0 $(verticalMenuWidth)px 0 0;
+	}
+
+	:any(.btMenuVerticalRight, .btMenuVerticalLeft).btHideMenu .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0;
+	}
+
+	.btMenuVerticalLeft.btMenuVerticalOn.btHideMenu .btPageWrap {
+		transform: translate3d($(verticalMenuWidth)px,0,0);
+		margin: 0;
+	}
+
+	.btMenuVerticalRight.btMenuVerticalOn.btHideMenu .btPageWrap {
+		transform: translate3d(-$(verticalMenuWidth)px,0,0);
+		margin: 0;
+	}
+
+}
+
+@media (max-width: 782px) {
+
+	.btMenuVertical.admin-bar > .menuPort {
+		padding-top: 46px;
+	}
+}
+
+.btMenuVerticalOn .menuPort {
+	transform: translateX(0);
+	transition: transform 1s ease-out-quint;
+}
+
+.btMenuVerticalLeft.btMenuVerticalOn .btPageWrap {
+	transform: translateX($(verticalMenuWidth)px);
+	.rtl& {transform: translateX(-$(verticalMenuWidth)px);}
+}
+
+.btMenuVerticalRight.btMenuVerticalOn .btPageWrap {
+	transform: translateX(-$(verticalMenuWidth)px);
+}
+
+.btMenuVertical.btDarkSkin .menuPort {
+	background-color: $(darkBgColor);
+	box-shadow: 0 0 50px 0 $(darkBorderColor);
+}
+
+.btMenuVertical.btLightSkin  .menuPort {
+	background-color: $(lightBgColor);
+	box-shadow: 0 0 50px 0 $(lightBorderColor);
+}
+
+/* Header tools layout */
+.btMenuHorizontal {
+	/* Top Tools */
+	.btTopToolsRight, .btTopToolsLeft {
+		flex-grow: 1;
+	}
+	/* Logo Area Tools */
+	.topBarInLogoArea {
+		float: right;
+		.rtl& {float: left;}
+		height: math($(logoHeight)*2.12)px;
+		display: flex;
+		align-items: center;
+		.topBarInLogoAreaCell {
+			border: 0px solid $(accentColor);
+			.widget_bt_banner_widget {
+				height: 90px;
+				width: 970px;
+				text-align: right;
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+/* Tools in vertical menu */
+.btMenuVertical .menuPort {
+	.btEmptyElement {
+		display: none;
+	}
+	.btTopToolsRight, .btTopToolsLeft {
+		max-width: none;
+		float: none;
+	}
+	.topBar {
+		padding: 0;
+	}
+    .topTools {
+        position: static;
+        padding: 0;
+		text-align: center;
+    }
+	.topBarInLogoArea:after, .topBar:after {
+		display: table;
+		content: ' ';
+		clear: both;
+	}
+	.topBarInMenu {
+		margin: 1em 0 0;
+	}
+	nav:before, nav:after {
+		display: inline-block;
+		content: ' ';
+		width: 100%;
+		height: 1px;
+		clear: both;
+	}
+	nav:before {
+		margin: 1em 0 1em;
+	}
+	nav:after {
+		margin: 1em 0 1em;
+	}
+}
+
+:lightSkinSelector {
+	nav:before, nav:after  {
+		background-color: $(lightBorderColor);		
+	}
+}
+
+:darkSkinSelector {
+	nav:before, nav:after  {
+		background-color: $(darkBorderColor);		
+	}
+}
+
+.btSearchInner.btFromTopBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+    transform: translate(0,-100%);
+	:lightSkinSelector & {
+		background: $(lightBgColor);
+		background: -moz-linear-gradient(top,  $(lightBgColor) 0%, $(lightSearchGradient) 100%);
+		background: -webkit-linear-gradient(top,  $(lightBgColor) $(lightSearchGradient) 100%);
+		background: linear-gradient(to bottom,  $(lightBgColor) 0%,$(lightSearchGradient) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$(lightBgColor)', endColorstr='$(lightBgColor)',GradientType=0 );
+	}
+	:darkSkinSelector & {
+		background: $(darkBgColor);
+		background: -moz-linear-gradient(top,  $(darkBgColor) 0%, $(darkSearchGradient) 100%);
+		background: -webkit-linear-gradient(top,  $(darkBgColor) $(darkSearchGradient) 100%);
+		background: linear-gradient(to bottom,  $(darkBgColor) 0%,$(darkSearchGradient) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$(lightBgColor)', endColorstr='$(darkBgColor)',GradientType=0 );
+	}
+	opacity: 0;
+	pointer-events: none;
+	transition: all 800ms ease;
+	z-index: 99998;
+	.btSearchInnerContent {
+		text-align: center;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		top: 0;
+	}
+	form {
+		text-align: center;
+		position: absolute;
+		height: 80px;
+		left: 0;
+		right: 0;
+		top: 50%;
+		margin: -40px 10% 0;
+	}
+	.btSearchInnerClose {
+		display: block;
+		position: absolute;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+		.rtl & {
+			right: auto;
+			left: 0;
+		}
+		.btIco {
+			margin: 0;
+		}
+		.btIco {
+			line-height: 120px;
+			width: auto;
+			height: auto;
+			transition: none;
+			.btIcoHolder:before {
+				font: 120px/1 Icon7Stroke;
+				content: "\e680";
+				width: auto;
+				height: auto;
+				transition: none;
+			}
+		}
+		.btIco a.btIcoHolder {
+			color: $(accentColor);
+			transition: 300ms ease all;
+			transform: rotate(0deg);
+		}
+		.btIco:hover a.btIcoHolder {
+			color: $(accentColorDark);
+			transition: 300ms ease all;
+			transform: rotate(180deg);
+		}
+	}
+	input[type="text"] {
+		padding: 0 75px 0 20px;
+		height: 100px;
+		line-height: 80px;
+		font-size: 55px;
+		font-weight: 300;
+		border: none;
+		text-align: center;
+		transition: 500ms ease all;
+		.rtl & {
+			padding: 0 20px 0 75px;
+		}
+		:lightSkinSelector & {
+			color: $(lightFontColor);
+			box-shadow: 0 0 0 2px $(lightBorderColor) inset;
+		}
+		:darkSkinSelector & {
+			color: $(darkFontColor);
+			box-shadow: 0 0 0 2px $(darkBorderColor) inset;
+		}
+		&:focus {
+			border: none;
+			transition: all 500ms ease;
+			:lightSkinSelector & {
+				box-shadow: 0 0 0 3px $(darkBgColor) inset;
+			}
+			:darkSkinSelector & {
+				box-shadow: 0 0 0 3px $(lightBgColor) inset;
+			}
+		}
+		.btHardRoundedButtons & {
+			border-radius: 100px;
+		}
+		.btSoftRoundedButtons & {
+			border-radius: 10px;
+		}
+		.btSquareButtons & {
+			border-radius: 0;
+		}
+	}
+	button {
+		border: 0 !important;
+		position: absolute;
+	    margin: 0;
+	    right: 0;
+	    top: 0;
+	    border-radius: 0;
+	    width: 100px;
+	    height: 100px;
+	    background: transparent !important;
+	    border: 0;
+	    cursor: pointer;
+		box-shadow: none !important;
+		.rtl & {
+			right: auto;
+			left: 0;
+		}
+		&:before {
+			font: 50px/1 Icon7Stroke;
+			display: block;
+			content: "\e618";
+			color: $(darkFontColor);
+			font-weight: 400;
+			text-align: center;
+			transition: color 300ms ease;
+			:lightSkinSelector & {
+				color: $(lightBorderColor);
+				&:hover {$(lightFontColor);}
+			}
+			:darkSkinSelector & {
+				color: $(darkBorderColor);
+				&:hover {$(darkFontColor);}
+			}
+		}
+		&:hover:before {
+			color: $(accentColor);
+			transition: color 300ms ease;
+		}
+	}
+	.btTopToolsSearchOpen & {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translate(0,0);
+	}
+}
+
+:lightSkinSelector {
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-webkit-input-placeholder {
+			color: $(lightFontColorLighter);
+		}
+	}
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-moz-placeholder {
+			color: $(lightFontColorLighter);
+		}
+	}
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-ms-input-placeholder {
+			color: $(lightFontColorLighter);
+		}
+	}
+}
+:darkSkinSelector {
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-webkit-input-placeholder {
+			color: $(darkBgSubColor);
+		}
+	}
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-moz-placeholder {
+			color: $(darkBgSubColor);
+		}
+	}
+	.btSearchInner.btFromTopBox {
+		input[type="text"]::-ms-input-placeholder {
+			color: $(darkBgSubColor);
+		}
+	}
+}
+
+/* iScroll */
+
+:darkSkinSelector .iScrollIndicator {
+	background-color: rgba(255, 255, 255, 0.05) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Prevent horizontal scroll on small screens when menu is open */
+
+body.btMenuVerticalOn {
+	width: 100vw;
+	overflow: hidden;
+}
+
+
+/* IE10 Menu Fix */
+
+
+html[data-useragent*='MSIE 10.0'] {
+
+	body.btMenuHorizontal .menuPort ul > li > ul {
+		opacity: 1;
+		pointer-events: auto;
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul {
+		display: block;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li > ul {
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul {
+		display: block;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul > li > ul {
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul > li.on > ul {
+		display: block;
+	}
+
+
+}
+
+/* Articles in main menu */
+:any(:lightSkinSelector, :darkSkinSelector) {
+	nav > ul > li > .sub-menu > .bt_mega_menu_content {
+		font-size: $(bodyFontSize)px;
+		color: $(lightFontColor);
+		.btText {
+			font-size: 0.867em;
+			.subToggler {
+				display: none !important;
+			}
+			ul {
+				list-style-type: disc;
+				margin: 0 0 15px 5px;
+				padding: 0 0 0 5px;
+				position: relative;
+				top: auto;
+				left: auto;
+				right: auto;
+				bottom: auto;
+				width: auto;
+				padding: 0;
+				box-shadow: none;
+				a, a:hover {
+					text-decoration: underline;
+					padding: 0;
+					&:before {
+						display: none;
+					}
+				a:hover {
+					text-decoration: none;
+					}
+				}
+				li {
+					margin-left: 1em;
+					display: list-item;
+				}
+			}
+		}
+		.btCustomMenu ul {
+			position: relative;
+			top: auto;
+			left: auto !important;
+			right: auto !important;
+			bottom: auto;
+			width: auto;
+			padding-top: 0;
+			padding-bottom: 0;
+			box-shadow: none;
+			a:after {
+				display: none;
+			}
+			ul {
+				display: none;
+			}
+		}
+		.slick-dots {
+			background: transparent;
+			box-shadow: none;
+			top: auto;
+			width: 100%;
+			left: auto;
+			right: auto;
+			padding: 0;
+			bottom: 10px;
+			li {
+				display: inline-block;
+				margin: 0 5px;
+			}
+		}
+	}
+	nav > ul > li.on > .sub-menu > .bt_mega_menu_content {
+		.btCustomMenu ul, ul {
+			pointer-events: all;
+		}
+	}
+}

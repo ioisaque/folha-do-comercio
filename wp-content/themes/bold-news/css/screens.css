@@ -1,0 +1,1012 @@
+@media (max-width: math($(baseTemplateWidth)+80, px)) {
+	.boldSection.gutter {
+		.boldClientList.btNextToSlidesArrow {
+			.nbs a {
+				background: $(darkBorderColor);
+				box-shadow: 0 0 0 1px transparent inset;
+				&:before {
+					color: $(darkFontColor);
+				}
+				&:hover {
+					background: $(darkFontColor);
+					box-shadow: 0 0 0 1px $(lightFontColor) inset;
+					&:before {
+						color: $(lightFontColor);
+					}
+				}
+			}
+			.nsPrev.nbs {
+				left: $(innerHorizontalPadding)px;
+				.boldSection.gutter & {
+					left: -60px;
+				}
+			}
+			.nsNext.nbs {
+				right: $(innerHorizontalPadding)px;
+				.boldSection.gutter & {
+					right: -60px;
+				}
+				.rtl & {
+					left: auto;
+				}
+				.rtl .boldSection.gutter & {
+				}
+			}
+		}
+	}
+}
+@media (max-width: math($(baseTemplateWidth)-1, px)) { 
+	.gutter .port {
+		width: 100%;
+		max-width: none;
+		padding-left: $(pagePadding)px;
+		padding-right: $(pagePadding)px;
+	}
+	.single-portfolio {
+		.boldArticle.gutter {
+			.port {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+		&.btNoSidebar {
+		}
+	}
+	.btNoSidebar:any(.single-portfolio, .single-post, .single-product) .btContentHolder {
+		padding-left: math($(innerHorizontalPadding)*2)px;
+		padding-right: math($(innerHorizontalPadding)*2)px;
+	}
+
+	.slick-slider:not(.bclPort) .slick-list {
+		margin: 0;
+		.slick-track .slick-slide .btSliderPort .btSliderCell .btSlideGutter {
+			max-width: none;
+			.btSlidePane {
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}		
+		}
+	}
+	.btSimpleArrows {
+		.nbs.nsPrev {
+			left: math($(innerHorizontalPadding)*2)px;
+			margin-left: 0;
+			.rtl & {
+				margin-left: 0;
+				left: auto;
+				right: math($(innerHorizontalPadding)*2+58)px;
+			}
+		}
+		.nbs.nsNext {
+			left: math($(innerHorizontalPadding)*2+58)px;
+			margin-left: 0;
+			.rtl & {
+				margin-left: 0;
+				left: auto;
+				right: math($(innerHorizontalPadding)*2)px;
+			}
+		}
+		.slick-dots {
+			margin: 0 math($(innerHorizontalPadding)*2)px;
+			.rtl & {
+				margin: 0 math($(innerHorizontalPadding)*2)px;
+			}
+		}
+	}
+
+	.btWithSidebar.btSidebarRight .btSidebar {
+		padding-right: $(sidebarPadding)px;
+		padding-left: 0;
+	}
+	.btWithSidebar.btSidebarLeft .btSidebar {
+		padding-left: $(sidebarPadding)px;
+		padding-right: 0;
+	}
+	.btWithSidebar {
+		.btSidebar .btSearchInnerContent.port {
+			padding: 0;
+		}
+	}
+	.btSearchInner.btFromTopBox .btSearchInnerClose {
+		right: $(pagePadding)px;
+	}
+
+	.btMenuVerticalRight .btVerticalMenuTrigger {
+		margin: math($(logoHeight)*0.62)px 0;
+	}
+
+	.boldClientList {
+		margin-left: $(pagePadding)px;
+		margin-right: $(pagePadding)px;
+	}
+
+	.boldSection:not(.gutter) .btCarouselSmallNav.boldClientList .nbs a {width: 25px;}
+	.boldSection:not(.gutter) .btCarouselSmallNav.boldClientList .nbs.nsPrev {
+		margin-left: -$(pagePadding)px;
+		a:after {
+			.btHardRoundedButtons & { border-radius: 0 $(hardBorderRadius) $(hardBorderRadius) 0; }
+			.btSoftRoundedButtons & { border-radius: 0 $(softBorderRadius) $(softBorderRadius) 0; }
+			border-left: none;
+		}
+	}
+	.boldSection:not(.gutter) .btCarouselSmallNav.boldClientList .nbs.nsNext {
+		margin-right: -$(pagePadding)px;
+		a:after {
+			.btHardRoundedButtons & { border-radius: $(hardBorderRadius) 0 0 $(hardBorderRadius); }
+			.btSoftRoundedButtons & { border-radius: $(softBorderRadius) 0 0 $(softBorderRadius); }
+			border-right: none;
+		}
+	}
+	.neighboringArticles, .btCommentsBox, #review_form_wrapper {
+		margin-left: -30px;
+		margin-right: -30px;
+	}
+	.wSlider {
+		.btSinglePostTemplate {
+			&.no-imageImagePosition {
+				&.text-left {
+					.btPostImageHolder {
+						padding: 0 math($(innerHorizontalPadding)*2)px 0 math($(innerHorizontalPadding)*4)px;
+					}
+				}
+				&.text-right {
+					.btPostImageHolder {
+						padding: 0 math($(innerHorizontalPadding)*4)px 0 math($(innerHorizontalPadding)*2)px;
+					}
+				}
+			}
+		}
+	}
+	.btSinglePostBanner .port {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.boldSection.gutter {
+		.boldClientList.btNextToSlidesArrow, .boldClientRegularList.btNextToSlidesArrow {
+			.nsPrev.nbs {
+				left: $(innerHorizontalPadding)px;
+				.boldSection.gutter & {
+					left: auto;
+					right: auto;
+				}
+				a {
+					width: 40px;
+				}
+			}
+			.nsNext.nbs {
+				right: $(innerHorizontalPadding)px;
+				.boldSection.gutter & {
+					left: auto;
+					right: auto;
+				}
+				.rtl & {
+					left: auto;
+				}
+				.rtl .boldSection.gutter & {
+				}
+			}
+		}
+	}
+	.boldSection:not(.gutter) {
+		.boldClientList, .boldClientRegularList {
+			.nsPrev.nbs, .nsNext.nbs {
+				margin-left: $(innerHorizontalPadding)px !important;
+				margin-right: $(innerHorizontalPadding)px !important;
+				a {
+					width: 40px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1350px) {
+	.single-post .btPageHeadline.wBackground {
+		& > .port {
+			min-height: 21em;
+			header {
+				h1 {
+					font-size: 3em;
+				}
+			}
+		}
+		.btHeadlineImage& {
+			& > .port {
+				min-height: 21em !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}			
+	}
+	.single-post.btHeadlineTitleTitle .btPageHeadline {
+		& > .port {
+			header {
+				h1 {
+					font-size: 3em;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1320px) {
+	.btTopBox.widget_bt_banner_widget {
+		display: none;
+	}
+}
+
+@media (max-width: 1199px) {
+
+	.slidedVariable .slick-list {
+		z-index: 1;
+	}
+	
+	.widget_shopping_cart {
+		.buttons .button {
+			width: 100%;
+		}
+		.buttons .button.checkout {
+			margin-top: 10px;
+		}
+	}
+	.widget_price_filter .price_slider_amount .button {
+		float: none;
+		width: 100%;
+	}
+
+	.slided:not(.btSimpleArrows) .nbs a {
+		width: 80px;
+		height: 80px;
+		&:before {font-size: 30px;}
+	}
+	.btCommentsBox textarea {
+		height: 175px;
+	}
+	.btArticleWithSideInfo {
+		.btArticleSideinfo {
+			flex: 0 0 math($(innerHorizontalPadding)*9)px;
+		}
+		.btArticleContent {
+			padding-left: math($(innerHorizontalPadding)*2)px;
+			padding-right: 0;
+			.rtl & {
+				padding-left: 0;
+				padding-right: math($(innerHorizontalPadding)*2)px;
+			}
+		}
+	}
+	.single-post .btPageHeadline.wBackground {
+		& > .port {
+			min-height: 22em;
+		}
+		.btHeadlineImage& {
+			& > .port {
+				min-height: 22em !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}			
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1160px) {
+	body.btMenuHorizontal {
+		.menuPort {
+			> nav > ul > li {
+				margin: 0 math($(menuPadding) / 2)px 0 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+
+	/* Grid related */
+
+	.btHighlight > .rowItemContent {
+		margin-bottom: 1em;
+	}
+
+	/* Horizontal padding */
+
+	.rowItem.btDoublePadding .rowItemContent {
+		padding: 0 math(1*$(innerHorizontalPadding), px);
+	}
+
+	.btArticleListItem {
+		margin-bottom: 40px;
+		.btArticleFooter {
+			:any(.btReadArticle,.btShareArticle) {
+				text-align: center;
+			}
+			.btShareArticle {
+				padding-bottom: 1em;
+			}
+			.shareRowItem, .tagsRowItem {
+				text-align: center;
+				padding-top: 1em;
+				padding-bottom: 1em;
+				.btTags ul li {
+					float: none;
+				}
+
+			}
+		}
+	}
+
+	.rowItem.btFooterMenu.btTextRight {
+		text-align: left;
+		ul.menu {
+			text-align: left;
+			clear: left;
+		}
+	}
+
+	.btSiteFooter .port .btFooterCopy {
+		padding-bottom: 0.8em;
+	}
+	
+	.horizontalPosts {
+		&.btLatestPostsContainer {
+			display: block;
+			.btSingleLatestPost {
+				margin: 2.2em 0 0;
+				&:first-child {margin-top: 0;}
+			}
+		}
+		
+	}
+
+	.neighboringArticles .btTextRight {
+		padding-top: 10px;
+		position: relative;
+		&:before {
+			height: 1px;
+			display: block;
+			position: absolute;
+			top: 0;
+			content: ' ';
+			left: $(innerHorizontalPadding)px;
+			right: $(innerHorizontalPadding)px1;
+			:lightSkinSelector & {background-color: $(lightFontColor);}
+			:darkSkinSelector & {background-color: $(darkFontColor);}
+		}
+	}
+
+	.slided:not(.btSimpleArrows) .nbs a {
+		width: 64px;
+		height: 64px;
+		&:before {
+			font-size: 24px;
+		}
+		&:after {
+			border-width: 2px;
+		}
+	}
+
+	body:not(.btPageTransitions).fullScreenHeight {
+		height: auto;
+	}
+
+	.btSiteFooterWidgets .btIconWidgetContent {
+		width: 100%;
+		ul.cart_list {width: 100%;}
+	}
+	.single-post .btPageHeadline.wBackground {
+		& > .port {
+			min-height: 21em;
+		}
+		.btHeadlineImage& {
+			& > .port {
+				min-height: 21em !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}			
+	}
+	.btReviewHolder {
+		h5.btReviewHeadingSummary {
+			margin-top: math($(innerHorizontalPadding)*2)px;
+		}
+	}
+	.wSlider {
+		.btSinglePostTemplate {
+			&.largeTemplate {
+				margin-top: 30px;
+				margin-bottom: 75px;
+			}
+			&.defaultTemplate {
+				margin-top: 15px;
+				margin-bottom: 50px;
+			}
+			&.smallTemplate {
+				margin-top: 10px;
+				margin-bottom: 200px;
+				&.sideImagePosition {
+					&.text-left, &.text-right {
+						width: 100%;
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+			}
+			&.backgroundImagePosition {
+				&.text-left {
+					width: 100%;
+					margin-right: 0;
+				}
+				&.text-right {
+					width: 100%;
+					margin-left: 0;
+				}
+			}
+			&.no-imageImagePosition {
+				&.text-left, &.text-right {
+					width: 100%;
+					margin-left: 0;
+					margin-right: 0;
+					.btPostImageHolder {
+						padding: 0 math($(innerHorizontalPadding)*4)px;
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+	.boldClientList.btOnTopArrow, .boldClientRegularList.btOnTopArrow {
+		margin-top: 80px;
+	}
+}
+
+@media (min-width: 480px) and (max-width: 992px) {
+
+	.btSiteFooterWidgets .btIconWidgetContent ul.cart_list {
+		.ppTxt {font-size: 1.4em;}
+	}
+
+}
+
+@media (max-width: 768px) {
+	.btContent, .btSidebar {
+		width: auto;
+		float: none;
+	}
+	.btNoSidebar:any(.single-portfolio, .single-post, .single-product) .btContentHolder {
+		padding-left: $(innerHorizontalPadding)px;
+		padding-right: $(innerHorizontalPadding)px;
+	}
+
+	:any( .btWithSidebar.btSidebarLeft, .btWithSidebar.btSidebarRight) {
+		.btSidebar {
+			padding-top: 30px;
+			padding-left: $(innerHorizontalPadding)px;
+			padding-right: $(innerHorizontalPadding)px;
+			float: none;
+			
+		}
+		.btContent  {float: none;padding-left: $(innerHorizontalPadding)px;}
+	}
+
+	.btGhost .btSlidePane {
+		.btArticleMeta {
+			display: none;
+		}
+	} 
+
+	.portfolioItem .btTextRight .btArticleMeta {
+		text-align: left;
+		margin: 0;
+		border: 0;
+		.rtl & {
+			text-align: right;
+			margin: 0;
+			border: 0;
+		}
+	}
+	.rtl .portfolioItem .btArticleShare {
+		float: none;
+	}
+	
+
+	.btGoogleMapsWrapper {
+		.btGoogleMapsContainer, .btGoogleMapsContainer.btGoogleMapsContainerWithContent  {
+			height: 400px !important;
+			position: relative;
+		}
+		.btGoogleMapsContent {
+			position: relative;
+			clear: both;
+			width: auto !important;
+			margin: $(pagePadding)px !important;
+			right: 0 !important;
+			left: 0 !important;
+			top: 0 !important;
+			padding: 2em 0;
+			.btGoogleMapsWrap {
+				width: 100%;
+				float: none;
+				position: relative;
+			}
+
+		}	
+	}
+
+	.tabsHeader {
+		width: 100%;
+		li {
+			float: none;
+			width: 100%;
+			:any(a,span) {
+				display: block;
+			}
+		}
+	}
+
+	.btCatFilter {
+		padding: 1em 30px 1.3em;
+		.btCatFilterTitle {
+			display: block;
+		}
+		.btCatFilterItem {
+			padding: 0.4em 0.7em 0;
+		}
+	}
+	
+	.topExtraSpaced {
+		padding-top: 12em;
+	}
+
+	.bottomExtraSpaced {
+		padding-bottom: 12em;
+	}
+
+	.topLargeSpaced {
+		padding-top: 9em;
+	}
+
+	.bottomLArgeSpaced {
+		padding-bottom: 9em;
+	}
+
+	.topLargeSpaced {
+		padding-top: 6em;
+	}
+
+	.bottomLargeSpaced {
+		padding-bottom: 6em;
+	}
+	
+	.topSpaced {
+		padding-top: 6em;
+	}
+
+	.bottomSpaced {
+		padding-bottom: 6em;
+	}
+	
+	.topSemiSpaced {
+		padding-top: 3em;
+	}
+
+	.bottomSemiSpaced {
+		padding-bottom: 3em;
+	}
+	
+	.btBlogSimpleView {
+		.simpleArticleSideGutter {
+			padding-bottom: 1em;
+		}
+		.rtl & {
+			& > .port > .boldCell > .boldRow > .rowItem {
+				float: none;
+				clear: both;
+			}
+		}
+	}
+	.btCommentsBox .comment-form {
+		.pcItem.btComment, .row {
+			float: none;
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+			.rtl & {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+	.btArticle .port {
+		padding-left: math($(innerHorizontalPadding)*2)px !important;
+		padding-right: math($(innerHorizontalPadding)*2)px !important;
+	}
+	.btArticleMeta, .boldShare {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.btAboutAuthor {
+		padding-left: math($(innerHorizontalPadding)*2)px;
+		padding-right: math($(innerHorizontalPadding)*2)px;
+	}
+
+	.rtl .btArticleWithSideInfo, .btArticleWithSideInfo {
+		.btArticleContentWrap {
+			flex-wrap: wrap;
+			.btArticleSideinfo {
+				flex: 1 1 100%;
+				order: 1;
+				border-top-style: solid;
+				border-top-width: 1px;
+				padding: 1em 0 0;
+				margin: 1em 0 0;
+				:lightSkinSelector & {
+					border-color: $(lightBorderColor);
+				}
+				:darkSkinSelector & {
+					border-color: $(darkBorderColor);
+				}
+			}
+			.btArticleContent {
+				padding: 0;
+				margin: 0;
+				border: 0;
+				.rtl & {
+					padding: 0;
+					margin: 0;
+					border: 0;
+				}
+			}
+		}
+	}
+	.btArticleWithSideInfo {
+		.btArticleSideinfo {
+			text-align: left;
+			.rtl & {
+				text-align: right;
+			}
+			.btArticleAuthor {
+				img {
+					width: 2.272em;
+					height: 2.272em;
+					margin: 2px 6px 0 0;
+					float: left;
+					.rtl & {
+						float: right;
+						margin: 2px 0 0 6px;
+					}
+				}
+			}
+			:any(.btArticleAuthor, .btArticleDate, .btArticleReadingTime, .btArticleViewsCount, .btArticleComments) {
+				margin: 0;
+				display: inline-block;
+				clear: none;
+			}
+			:any(.btArticleAuthor, .btArticleDate, .btArticleReadingTime, .btArticleViewsCount, .btArticleComments):after {
+				display: inline-block;
+				padding: 0 .909em;
+				clear: none;
+				width: auto;
+				border: 0;
+			}
+			& > header {
+				display: block;
+			}
+			.btTags {
+				padding: 0;
+				margin: 1em 0 1em;
+				border: 0;
+				text-align: inherit;
+				&:before {
+					display: block;
+					content: "";
+					width: 100%;
+					border-top: 1px solid;
+					:lightSkinSelector & {
+						border-color: $(lightBorderColor);
+					}
+					:darkSkinSelector & {
+						border-color: $(darkBorderColor);
+					}
+				}
+				ul {
+					margin: 30px 10px 0 0;
+					.rtl & {
+						margin: 30px 0 0 10px;
+					}
+				}
+			}
+		}
+	}
+	:not(.btArticleWithSideInfo) {
+		.boldShare {
+			.tagsRowItem  {
+				padding-left: 0;
+				padding-right: 0;
+				ul:after {
+					clear: both;
+					display: block;
+					content: "";
+					margin-bottom: 1.5em;
+				}
+			}
+			.shareRowItem {
+				padding-left: 0;
+				padding-right: 0;
+				text-align: left;
+				.rtl& {
+					text-align: right;
+				}
+			}
+		}
+	}
+	.single-post .btPageHeadline.wBackground {
+		& > .port {
+			min-height: 18em;
+			header {
+				h1 {
+					font-size: 3em;
+				}
+			}
+		}
+		.btHeadlineImage& {
+			& > .port {
+				min-height: 18em !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}			
+	}
+	.single-post.btHeadlineTitleTitle .btPageHeadline {
+		& > .port {
+			header {
+				h1 {
+					font-size: 3em;
+				}
+			}
+		}
+	}
+	.single-portfolio {
+		.boldArticle {
+			padding-left: math($(innerHorizontalPadding)*2)px;
+			padding-right: math($(innerHorizontalPadding)*2)px;
+			.socialRow {
+				padding-left: 0; 
+				padding-right: 0; 
+				margin-left: 0; 
+				margin-right: 0; 
+			}
+			&.btPortfolioSingleItemColumns {
+				padding-top: math($(innerHorizontalPadding)*2)px !important;
+			}
+		}
+	}
+	.btRelatedPosts:before {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	.btCategoryTitle {
+		.btCatFilter {
+			clear: both;
+			margin: 10px 0 0;
+			border-width: 1px 0 0 0;
+			.btTextRight & {
+				border-width: 1px 0 0 0;
+			}
+			.btIcoExtraSmallSizeIcon&, .btIcoSmallSizeIcon&, .btIcoMediumSizeIcon&, .btIcoBigSizeIcon&, .btIcoLargeSizeIcon& {
+				line-height: 3;
+			}
+		}
+	}
+	.btPageHeadline .header {
+		max-width: 100%;
+	}
+	.mfp-arrow {
+		width: 60px !important;
+		height: 60px !important;
+		margin: -30px 15px 0 !important;
+		&:before {
+			font-size: 30px !important;
+			line-height: 60px !important;
+		}
+		&:hover {
+			&:before {
+				line-height: 72.5px !important;
+			}
+		}
+	}
+}
+
+@media (max-width:620px) {
+	.btHasAuthorInfo {
+		.btArticleListBody {
+			padding-left: 0;
+			clear: both;
+			margin: 0;
+			border: 0;
+			.rtl & {
+				padding-right: 0;
+				clear: both;
+				margin: 0;
+				border: 0;
+			}
+		}
+		.articleSideGutter {
+			position: relative;
+			left: 0;
+			width: auto;
+			text-align: left;
+			.rtl & {
+				text-align: right;
+			}
+			:any(.btArticleAuthor, .btArticleDate) {
+				padding: 0 1.8em 0 0;
+				display: inline-block;
+				clear: none;
+				.rtl & {
+					padding: 0 0 0 1.8em;
+				}
+			}
+			:any(.btArticleAuthor, .btArticleDate):after {
+				display: none;
+			}
+			.btArticleAuthor img {
+				height: 2.272em;
+				width: 2.272em;
+				margin: .3em 6px 0 0;
+				float: left;
+				.rtl & {
+					float: right;
+					margin: .3em 0 0 6px;
+				}
+			}
+		}
+		&.btBlogColumnView {
+			.articleSideGutter {
+				padding-bottom: 1em;
+			}
+		}
+	}
+
+	.slided:not(.btSimpleArrows) .nbs a {
+		width: 48px;
+		height: 48px;
+		&:before {
+			font-size: 18px;
+		}
+		&:after {
+			border-width: 1px;
+		}
+	}
+
+	.neighboringArticles .nbs a {
+		.nbsImage {
+			width: 62px;
+			height: 62px;
+			flex: 0 0 62px;
+		}
+		.nbsItem .nbsTitle {font-size: 16px;}
+		.nbsItem .nbsDir {font-size: 10px;}
+	}
+	.single-post .btPageHeadline.wBackground {
+		& > .port {
+			min-height: 0;
+			header {
+				.dash {
+					position: relative;
+					padding-top: 1em;
+					bottom: 18px !important;
+					padding-bottom: 0;
+					h1 {
+						font-size: 2.5em;
+					}
+				}
+			}
+		}
+	}
+	.single-post.btHeadlineTitleTitle .btPageHeadline {
+		& > .port {
+			header {
+				h1 {
+					font-size: 2.5em;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 520px) {
+	.btCommentsBox {
+		.vcard {
+			flex-flow: row wrap;
+			justify-content: flex-start;
+			align-items: flex-start;
+			padding: 0 0 15px;
+			h5.author {
+				flex: 1 1 100%;
+			}
+			.posted {
+				padding: 0;
+				margin-top: 5px;
+				text-align: left;
+			}
+		}
+		ul.comments {
+			ul.children {
+				padding: 0;
+				li.comment {
+					padding: 0;
+					border-top: none !important;
+					article {
+						position: relative;
+					    padding: 0 18px 5px 12px;
+					    :lightSkinSelector & {background-color: rgba(0,0,0,0.055);}
+					    :darkSkinSelector & {background-color: rgba(255,255,255,0.055);}
+					    &:after {
+					    	content: '\f148';
+					    	display: block;
+					    	position: absolute;
+					    	width: 24px;
+					    	height: 24px;
+					    	font: normal 16px/24px FontAwesome;
+					    	vertical-align: middle;
+					    	text-align: center;
+					    	:lightSkinSelector & {background-color: $(lightBgColor);}
+					    	:darkSkinSelector & {background-color: $(darkBgColor);}
+					    }
+					}
+				}
+			}
+		}
+		ul.children {
+		    margin: 0;
+		}
+	}
+	.mfp-arrow {
+		width: 40px !important;
+		height: 40px !important;
+		margin: -20px 15px 0 !important;
+		&:before {
+			font-size: 20px !important;
+			line-height: 40px !important;
+		}
+		&:hover {
+			&:before {
+				line-height: 50px !important;
+			}
+		}
+	}
+}
+
+@media (max-width: 460px) {
+	.btAboutAuthor {
+	    display: block;
+	    width: auto;
+	    .aaAvatar {
+	    	display: block;
+	    	width: auto;
+	    	max-width: 150px;
+	    	margin: 0 auto 20px;
+	    }
+	    .aaTxt {
+	    	display: block;
+	    	padding: 0;
+	    	margin: 0 0 10px;
+	    	text-align: center;
+	    }
+	}
+}
+@media (max-width: 359px) {
+	.btMenuVerticalOn {
+		.btVerticalMenuTrigger {
+			transform: scale(.5);
+			margin-left: -30px;
+		}
+		&.rtl {
+			.btVerticalMenuTrigger {
+				margin-left: 0;
+				margin-right: -30px;
+			}
+		}
+	}
+}

@@ -1,0 +1,1734 @@
+/* Header */
+
+.logo {
+	visibility: hidden;
+}
+
+.topBarInLogoArea {visibility:hidden;}
+
+.mainHeader  {
+	width: 100%;
+	position: absolute;
+	background-color: inherit;
+	transform: translateY(0);
+	font-family: "$(menuFont)";
+	.btMenuVertical.btAccentDarkHeader &, .btMenuVertical.btLightAccentHeader & {
+		background-color: $(accentColor);
+		.btVerticalMenuTrigger {
+			.btIco.btIcoDefaultType .btIcoHolder {
+				&:before {color: $(darkFontColor);}
+			}
+		}
+		.logo {transition: opacity 400ms ease;}
+	}
+	.btMenuVertical.btMenuVerticalOn & {
+		.logo { opacity: 0; }
+	}
+}
+.mainHeader:not(.gutter) .port {
+	padding: 0 $(pagePadding)px;	
+}
+
+body.btAccentDarkHeader.btBoxedPage.btBelowMenu, body.btAccentLightHeader.btBoxedPage.btBelowMenu {
+	.mainHeader:not(.gutter) .port {
+		padding: 0;	
+	}	
+	
+}
+
+.btPageTransitions .mainHeader {
+	z-index: 1020;
+}
+
+.mainHeader.btDarkSkin, .btLightSkin .mainHeader.btDarkSkin, .btDarkSkin .mainHeader {
+	background-color: $(darkBgColor);
+}
+.mainHeader.btLightSkin, .btDarkSkin .mainHeader.btLightSkin, .btLightSkin .mainHeader {
+	background-color: $(lightBgColor);
+}
+
+/* Below menu */
+
+.btBelowMenu:not(.btStickyHeaderActive) .mainHeader {
+	background-color: transparent;
+}
+
+.btMenuHorizontal:not(.btBelowMenu) .mainHeader {
+	box-shadow: 0 0 20px 0 rgba(0,0,0,.15);
+}
+
+/* Main menu */
+
+.btLogoArea {
+    position: relative;
+	z-index: 1;
+	.logo {
+		.btMenuVertical & { transform: none !important; }
+		line-height: 0;
+		float: left;
+		.rtl & {float: right;}
+			img {
+				height: $(logoHeight)px;
+				width: auto;
+				display: block;
+				.btMenuVertical & { height: math($(logoHeight)*0.6)px; 
+			}
+		}
+		img.btAltLogo {
+			display: none;
+		}
+	}
+	.btTextLogo {
+		font-family: "$(logoFont)";
+		font-size: 2em;
+		font-weight: 800;
+		line-height: $(logoHeight)px;
+		.btMenuVertical & { line-height: math($(logoHeight)*0.6)px; }
+	}
+}
+
+.menuPort {	
+	font-family: "$(menuFont)";
+	visibility: hidden;
+	font-size: $(menuFontSize)px;
+	font-weight: 400;
+	nav {
+		ul {
+			list-style: none;
+			display: block;
+			margin: 0;
+			padding: 0;
+			transition: all 360ms ease 0s;
+			li {
+				padding: 0;
+				margin: 0;
+			}
+		}
+		> ul {
+			> li {
+				display: block;
+				position: relative;
+				transition: opacity 300ms ease;
+				&.on {opacity: 1;}
+				a {
+					display: block;
+					position: relative;
+					padding: 1em 1em;
+					font-weight: 400;
+					&:hover {
+						color: $(accentColor) !important;
+						text-decoration: none;
+					}
+				}
+				> a {
+					line-height: $(logoHeight)px;
+					.btBelowLogoArea & {line-height: $(belowLogoMenuHeight)px;}
+					padding: 0;				
+				}
+			}
+		}
+		/* Only horizontal menu */
+		.btMenuHorizontal & {
+			> ul {
+				> :any(li.current-menu-ancestor, li.current-menu-item) {
+					> a:after {
+						content: ' ';
+						display: block;
+						position: absolute;
+						z-index: 5;
+						bottom: 0;
+						left: 0;
+						right: 0;
+						pointer-events: none;
+						height: 4px;
+						background-color: $(accentColor);
+						.btAccentDarkHeader&, .btAccentLightHeader& {
+							background-color: $(alternateColor);
+						}
+					}		
+				}
+				> ul > li > ul :any(li.current-menu-ancestor, li.current-menu-item) > a {
+					color: $(accentColor) !important;
+				}
+				ul {
+					background-color: $(lightBgColor);
+					li a {
+						margin: 0 1.5em;
+						color:  $(lightFontColor);	
+					}
+					li:not(:last-child) > a {
+						border-bottom: 1px solid $(lightBorderColor);		
+					}
+				}
+			}
+		}
+	}
+}
+
+/* Triggers */
+.btHorizontalMenuTrigger {
+	display: none;
+	float: right;
+	line-height: $(logoHeight)px;
+	margin: 0 -8px 0 0.5em;
+	font-size: 32px;
+}
+
+
+/* Skins */
+
+:darkSkinSelector  {
+	.menuPort > nav > ul > li > a {
+		color: $(darkFontColor);
+	}
+}
+
+:lightSkinSelector {
+	.menuPort > nav > ul > li > a {
+		color: $(lightFontColor);
+	}	
+}
+
+.btAccentLightHeader.btDarkSkin {
+	.menuPort > nav > ul > li > a {
+		color: $(lightFontColor);
+	}		
+}
+
+:darkSkinSelector :any(.topBarInMenu:after, .topBar:before) {
+	background-color: $(darkBorderColor);
+}
+
+/* Subtogglers */
+
+.subToggler {
+	display: none;
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	width: 45px;
+	z-index: 80;
+	padding: 0px 0 0;
+	text-align: center;
+	.on > & {
+		transform: rotateX(180deg);
+	}
+	body.btMenuVertical & {
+		display: block !important;
+		padding: 20px 0;
+		line-height: 1;
+		right: 0;
+    	top: -5px;
+	}
+	body.btMenuHorizontal & {
+		right: -25px;
+		line-height: $(logoHeight)px;
+	}
+	body.btMenuHorizontal.btMenuBelowLogo & {
+		line-height: $(belowLogoMenuHeight)px;
+	}
+	body.btMenuHorizontal .menuPort ul ul & {
+		right: 0px;
+		line-height: inherit;
+		padding: 1em 0;
+	}
+	&:before {
+		content: '\f107';
+		font: normal 16px/1 FontAwesome;
+	}
+}
+
+.touch .btMenuHorizontal {
+	.menuPort nav ul li {
+		a {
+			padding-right: 15px;
+		}
+		ul li a {
+			padding-right: 35px;
+		}
+		.subToggler {
+			display: block;
+		}			
+	}
+}
+		
+
+/* Horizontal menu, no need for override on responsive */
+.btMenuHorizontal {
+	&.btSoftRoundedButtons:not(.btMenuBelowLogo), &.btHardRoundedButtons:not(.btMenuBelowLogo) {
+		.mainHeader.gutter .port .btBelowLogoArea {
+			border-bottom-left-radius: $(softBorderRadius);
+			border-bottom-right-radius: $(softBorderRadius);
+		}
+	}
+	&.btSoftRoundedButtons.btMenuBelowLogo, &.btHardRoundedButtons.btMenuBelowLogo {
+		.mainHeader.gutter .port .btLogoArea {
+			border-bottom-left-radius: $(softBorderRadius);
+			border-bottom-right-radius: $(softBorderRadius);
+		}
+	}
+	&.btAccentLightHeader.btSoftRoundedButtons.btMenuBelowLogo, 
+	&.btAccentDarkHeader.btHardRoundedButtons.btMenuBelowLogo {
+		.mainHeader.gutter .port .btBelowLogoArea {
+			border-radius: $(softBorderRadius);
+		}	
+	}
+	.menuPort {
+		> nav > ul > li {
+			margin: 0 $(menuPadding)px 0 0;
+			.rtl& {
+				&:last-child {
+					margin: 0 $(menuPadding)px 0 0 !important;
+					> ul {
+						right: auto;
+						left: -30px;
+						> li {
+							text-align: left;
+							> ul {
+								left: $(dropdownWidth)px;
+								right: auto;
+							}	
+						}
+					}
+				}
+			}
+		}
+		ul > li > ul
+		{
+			opacity: 0;
+		}
+		> nav > ul > li > ul {
+			
+			> li {
+				font-size: 0.9em;	
+			}
+			
+		}
+		> nav > ul ul {
+			position: absolute;
+			width: $(dropdownWidth)px;
+			right: 0;
+			top: auto;
+			margin: 0 0 0;
+			pointer-events: none;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+			z-index: 1;
+			padding: 0;
+			li {
+				z-index: 4;
+				float: none;
+				/* overflow: hidden; */
+			}
+			
+			ul {
+				display: block;
+				top: 0;
+				margin: 0;
+				pointer-events: none;
+			}
+		}
+
+        > nav > ul li.current-menu-item ul,  > nav >  li.current-menu-ancestor ul {
+			margin: 0;
+		}
+
+		> nav > ul > li {
+			float: left;
+			.rtl& {float: right;}
+			position: relative;
+			z-index: 5;
+		}
+		> nav > ul > li.on > ul {
+			opacity: 1;
+			pointer-events: auto;
+			z-index: 2;
+		}
+		> nav > ul > li.on > ul > li.on > ul {
+			opacity: 1;
+			pointer-events: auto;
+			z-index: 3;
+		}
+		> nav:not(.leftNav) > ul > li:last-child {
+			margin: 0;
+		}
+	}
+
+}
+
+/* Menu positions */
+.btMenuHorizontal {
+	.menuPort > nav {
+		float: left;
+		padding-left: 50px;
+		ul ul {
+			right: auto;
+			left: -30px;
+			ul {
+				left: $(dropdownWidth)px;
+				right: auto;
+				.rtl& {
+					left: auto;
+					right: $(dropdownWidth)px;			
+				}
+			}
+		}
+		.rtl& {
+			padding-right: 50px;
+			padding-left: 0;
+		}
+		.btMenuRight& {
+			float: right;
+			> ul > li:last-child {
+				ul {
+					text-align: right;
+					right: -30px;
+					left: auto;
+					.rtl& {
+						left: -30px;
+						right: 0;
+					}
+					ul {
+						left: -$(dropdownWidth)px;
+						right: auto;
+						.rtl& {
+							left: auto;
+							right: -$(dropdownWidth)px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.btMenuHorizontal.btMenuCenter  {
+	.logo {
+		position: relative;
+		z-index: 8;
+		float: left;
+		margin: 0 0 0 50%;
+	}
+	.menuPort nav {
+		float: none;
+	}
+	.menuPort .leftNav {
+		position: absolute;
+		right: 50%;
+		left: auto;
+		padding: 0;
+		ul {
+			float: right;
+		}
+		ul ul {
+			right: auto;
+			left: -20px;
+		}
+		 ul ul ul {
+			left: $(dropdownWidth)px;
+			right: auto;
+		}
+	}
+	.menuPort .rightNav {
+		position: absolute;
+		left: 50%;
+		right: auto;
+		padding-left: $(menuPadding)px;
+		ul ul {
+			right: -20px;
+			left: auto;
+		}
+		ul ul ul {
+			right: $(dropdownWidth)px;
+			left: auto;
+		}
+		li {
+			text-align: right;
+		}
+	}
+}
+
+/* Wide menu */
+
+html:not(.touch) {
+	body.btMenuHorizontal {
+		.menuPort > nav > ul > li.btMenuWideDropdown {
+			position: static;
+			> ul {
+				width: 100%;
+				left: 0;				
+				> li {
+					top: auto;
+					border-top: none !important;
+					float: left;
+					> a {
+						border-top: none !important;
+						border-bottom: 1px solid $(lightHeadlineColor);
+					}
+					> ul > li > ul:before {
+						  display: none;
+					}
+					> ul {
+						opacity: 1;
+						top: auto;
+						margin: 0 !important;
+						width: 100%;
+						right: 0;
+						left: 0;
+						position: relative;
+						box-shadow: none;
+						> li:first-child > a {
+							border-top: none !important;
+						}
+					}
+					> il:not(:last-child) {
+						border-left: 1px solid $(lightBorderColor);
+					}
+					ul:before {
+						display: none;
+					}
+				}
+
+			}
+			> li {
+				width: 100%;
+			}
+			> li  .sub-menu {
+				width: 100%;
+			}
+		}
+		.menuPort > nav > ul > li.btMenuWideDropdown.on > ul > li > ul {
+			pointer-events: auto;
+		}
+	}
+	
+	body.btMenuCenter.btMenuHorizontal .menuPort > nav.rightNav > ul > li.btMenuWideDropdown > ul {
+		width: 300%;
+		left: -200%;
+	}
+	
+	body.btMenuCenter.btMenuHorizontal .menuPort > nav.leftNav > ul > li.btMenuWideDropdown > ul {
+		width: 300%;
+		right: -200%;
+	}
+
+
+	@for i in range(0, 20) {
+		body.btMenuHorizontal .mainHeader li.btMenuWideDropdown.btMenuWideDropdownCols-#(i) {
+			> ul > li { 
+				width: math( 100/#(i), % ) !important;
+			}	
+		}
+	}	
+
+}
+
+/* Top bar */
+
+.topBar {
+	visibility: hidden;
+}
+
+.btMenuHorizontal {
+	.topBar {
+		font-size: .8em;
+		line-height: 3.5em;
+		/* padding: .7em 0; */
+		z-index: 2;
+		.btIco {
+			font-size: 1.2em;
+			margin-top: -0.05em;
+		}
+		.topBarPort {
+			display: flex;
+		} 
+		.topBarPort:after, .topBarPort:before {
+			display: none;
+		}
+		:not(.btAccentLightHeader):not(.btLightAccentHeader):not(.btAccentDarkHeader):not(.btLightHeader)&{
+			:darkSkinSelector& {
+				border-bottom: 1px solid $(darkBorderColor);
+			}
+			:lightSkinSelector& {
+				border-bottom: 1px solid $(lightBorderColor);
+			}
+		}	
+	}
+
+	.topBarInMenu {
+		line-height: inherit;
+		float: right;
+		display: table;
+		height: $(logoHeight)px;
+		margin-left: $(menuPadding)px;
+		.rtl& {
+			float: left;
+			margin-left: 0;
+			margin-right: $(menuPadding)px;
+		}
+		.topBarInMenuCell {
+			line-height: math($(belowLogoMenuHeight) - 2)px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.btIco {
+			.btIcoHolder span {
+				display: none;
+			}
+		}
+	}
+	.btBelowLogoArea .topBarInMenu {
+		/* height: math($(belowLogoMenuHeight)-2)px;
+		line-height: math($(belowLogoMenuHeight)-2)px;
+		margin-top: 1px; */
+		height: $(belowLogoMenuHeight)px;
+		line-height: $(belowLogoMenuHeight)px;
+	}
+	
+}
+
+/* Menu bellow logo */
+
+.btMenuHorizontal.btMenuBelowLogo {
+	.btBelowLogoArea {
+		padding: 0px 0;
+		:not(.btAccentLightHeader):not(.btAccentDarkHeader):not(.btLightHeader)&{
+			:darkSkinSelector& {
+				border-top: 1px solid $(darkBorderColor);
+			}
+			:lightSkinSelector& {
+				border-top: 1px solid $(lightBorderColor);
+			}
+		}
+		z-index: 0;
+	}
+	.menuPort {
+		clear: both;
+		position: relative;
+		margin: 0;
+		float: none;
+		nav {
+			padding: 0;
+			.rtl& {
+				float: right;
+				> ul {
+					> li {
+						margin: 0 0 0 $(menuPadding)px;	
+						&:last-child {
+							margin: 0 !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+:darkSkinSelector .btBelowLogoArea {
+	border-color: $(darkBorderColor) !important;
+}
+:lightSkinSelector .btBelowLogoArea {
+	border-color: $(lightBorderColor) !important;
+}
+
+/* Header styles */
+
+.btAccentDarkHeader.btMenuHorizontal, .btLightAccentHeader.btMenuHorizontal, .btAccentLightHeader.btMenuHorizontal, .btLightHeader.btMenuHorizontal {
+	:not(.btStickyHeaderActive)& .btLogoArea {
+		/* padding: 25px 0; */
+	}
+	&:not(.btBelowMenu) {
+		.mainHeader {
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+		}	
+	}
+}
+
+.btAccentLightHeader.btMenuHorizontal {
+	.btBelowLogoArea, .topBar {
+		position: relative;
+		.btLightSkin&,.btDarkSkin& {
+			.btIconWidgetContent { color: $(darkFontColor); }
+			.btIco.btIcoDefaultType.btIcoDefaultColor {
+				.btIcoHolder {
+					&:before {color: $(darkFontColor);}
+					&:hover:before {color: $(alternateColor);}
+				}	
+			}
+			.menuPort > nav > ul > li {
+				> a {color: #fff;}
+				> a:hover {color: $(alternateColor) !important;}
+			}
+		}
+	}
+}
+
+/* Accent light */
+
+.btAccentLightHeader.btMenuHorizontal:not(.btBelowMenu), .btAccentLightHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(lightBgColor);
+	}	
+	.btBelowLogoArea, .topBar {
+		background-color: $(accentColor);
+		&:before {
+			display: block;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -2000em;
+			right: -2000em;
+			background-color: $(accentColor);
+			/* border-top: 1px solid $(lightBorderColor); */
+		}
+		&:after {
+			content: ' ';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+	}
+}
+
+.btAccentLightHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		background-color: transparent;
+		.btBelowLogoArea, .topBar {
+			background-color: $(accentColor);
+			/* padding-left: $(pagePadding)px;
+			padding-right: $(pagePadding)px; */
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		.btBelowLogoArea {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+		}
+	}	
+
+}
+
+/* Light */
+
+.btLightHeader.btMenuHorizontal {
+	.btBelowLogoArea, .topBar {
+		position: relative;
+		.btLightSkin&,.btDarkSkin& {
+			.btIco.btIcoDefaultType.btIcoAccentColor .btIcoHolder {
+				&:before {color: $(darkFontColor);}
+				&:hover:before {color: $(alternateColor);}
+			}
+			.btIco.btIcoDefaultType.btIcoDefaultColor .btIcoHolder {
+				&:before {color: $(darkFontColor);}
+				&:hover:before {color: $(alternateColor);}
+			}
+			.btIconWidgetContent { color: $(darkFontColor);}
+			.menuPort > nav > ul > li {
+				> a {color: #fff;}
+				> a:hover {color: $(alternateColor) !important;}
+			}
+		}
+	}
+}
+
+.btLightHeader.btMenuHorizontal:not(.btBelowMenu), .btLightHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(lightBgColor);
+	}	
+	.btBelowLogoArea, .topBar {
+		background-color: $(darkBgColor);
+		&:before {
+			display: block;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -2000em;
+			right: -2000em;
+			background-color: $(darkBgColor);
+			border-top: 1px solid $(lightBorderColor);
+		}
+		&:after {
+			content: ' ';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+	}
+}
+
+.btLightHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		background-color: transparent;
+		.btBelowLogoArea, .topBar {
+			background-color: $(darkBgColor);
+			padding-left: $(pagePadding)px;
+			padding-right: $(pagePadding)px;
+		}
+		.btBelowLogoArea {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);
+		}
+	}	
+
+}
+
+/* Accent dark */
+
+.btAccentDarkHeader.btMenuHorizontal {
+	.mainHeader {
+		.btLightSkin&,.btDarkSkin& {
+			color: $(darkFontColor);
+			.btIco.btIcoDefaultType.btIcoAccentColor .btIcoHolder {
+				&:before {color: $(alternateColor);}
+				&:hover:before {color: $(darkFontColor);}
+			}
+			.btIco.btIcoDefaultType .btIcoHolder {
+				&:before {color: $(darkFontColor);}
+				&:hover:before {color: $(alternateColor);}
+			}
+			.btIconWidgetContent { color: $(darkFontColor);}
+			.menuPort > nav > ul > li {
+				> a {color: $(darkFontColor);}
+				> a:hover {color: $(alternateColor) !important;}
+			}
+		}
+	}
+} 
+
+.btAccentDarkHeader.btMenuHorizontal:not(.btBelowMenu), .btAccentDarkHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(accentColor);
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			background-color: $(darkBgColor);
+			.btLightSkin&,.btDarkSkin& {
+				/* border-color: $(darkBorderColor) !important; NOT QUITE GOOD */
+				border-color: rgba(255,255,255,0.35) !important;
+			} 
+			&:before {
+				display: block;
+				content: ' ';
+				position: absolute;
+				top: -1px;
+				bottom: 0;
+				left: -2000em;
+				right: -2000em;
+				background-color: $(darkBgColor);
+				border-top: 1px solid $(lightBorderColor);
+			}
+			&:after {
+				content: ' ';
+				display: table;
+				width: 100%;
+				clear: both;
+			}
+		}
+	}
+}
+
+.btAccentDarkHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		.port {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);	
+			.btLogoArea {
+				background-color: $(accentColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;	
+			}
+			.btBelowLogoArea, .topBar {
+				background-color: $(darkBgColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}
+		}
+		
+	}	
+}  
+
+/* Light accent */
+
+.btLightAccentHeader.btMenuHorizontal {
+	.mainHeader {
+		.btLightSkin&,.btDarkSkin& {
+			.btLogoArea {
+				color: $(darkFontColor);
+				.btIco.btIcoDefaultType.btIcoAccentColor .btIcoHolder {
+					&:before {color: $(alternateColor);}
+					&:hover:before {color: $(darkFontColor);}
+				}
+				.btIco.btIcoDefaultType .btIcoHolder {
+					&:before {color: $(darkFontColor);}
+					&:hover:before {color: $(alternateColor);}
+				}
+				.btIconWidgetContent { color: $(darkFontColor);}
+				.menuPort > nav > ul > li {
+					> a {color: $(darkFontColor);}
+					> a:hover {color: $(alternateColor) !important;}
+				}	
+			}
+		}
+	}
+} 
+
+.btLightAccentHeader.btMenuHorizontal:not(.btBelowMenu), .btLightAccentHeader.btMenuHorizontal.btStickyHeaderActive {
+	.mainHeader {
+		background-color: $(accentColor);
+		.btBelowLogoArea, .topBar {
+			position: relative;
+			background-color: $(lightBgColor);
+			&:before {
+				display: block;
+				content: ' ';
+				position: absolute;
+				top: -1px;
+				bottom: 0;
+				left: -2000em;
+				right: -2000em;
+				background-color: $(lightBgColor);
+				border-top: 1px solid $(lightBorderColor);
+			}
+			&:after {
+				content: ' ';
+				display: table;
+				width: 100%;
+				clear: both;
+			}
+		}
+	}
+}
+
+.btLightAccentHeader.btMenuHorizontal.btBelowMenu:not(.btStickyHeaderActive) {
+	.mainHeader {
+		.port {
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.4);	
+			.btLogoArea {
+				background-color: $(accentColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;	
+			}
+			.btBelowLogoArea, .topBar {
+				background-color: $(lightBgColor);
+				padding-left: $(pagePadding)px;
+				padding-right: $(pagePadding)px;
+			}
+		}
+		
+	}	
+}
+
+
+/* Sticky */
+
+body.btMenuHorizontal.btStickyHeaderActive .mainHeader {
+	position: fixed;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+	transform: translateY(-100%);
+	.topBar {
+		display: none;
+	}
+	.btBelowLogoArea {
+		padding: 0;
+	}
+	.btLogoArea {
+		.logo img {
+			height: math($(logoHeight)*0.6)px;
+		}	
+		.btTextLogo {
+			font-size: 1.5em;
+			line-height: math($(logoHeight)*0.6)px;
+		}
+		.menuPort nav>ul>li>a {
+			line-height: math($(logoHeight)*0.6)px;
+		}
+		.topBarInMenu {
+			height: math($(logoHeight)*0.6)px;
+		}
+	}
+	
+	
+}
+
+body.btMenuHorizontal.btStickyHeaderActive.btMenuBelowLogo .mainHeader {
+	.btLogoArea {
+		display: none;
+	}
+}
+
+
+body.btMenuHorizontal.btStickyHeaderActive.btDarkSkin:not(.btAccentDarkHeader) .mainHeader {
+	background-color: hsla-adjust( $(darkBgColor) 0 0 0 -10 );
+}
+body.btMenuHorizontal.btStickyHeaderActive.btLightSkin:not(.btAccentDarkHeader) .mainHeader {
+	background-color: hsla-adjust( $(lightBgColor) 0 0 0 -10 );
+}
+
+body.btMenuHorizontal.btStickyHeaderActive.btStickyHeaderOpen .mainHeader {
+	transition: transform 0.5s ease-out-quint;
+	transform: translateY(0);
+}
+
+/* Hide menu */
+
+body.btMenuHorizontal.btHideMenu {
+	.btHorizontalMenuTrigger {
+		display: block;
+	}
+	.menuPort {
+		opacity: 0;
+		transition: opacity 1s ease;
+	}
+	
+}
+
+.btShowMenu .menuPort {
+	opacity: 1 !important;
+}
+
+/* Vertical and responsive menu */
+
+.btVerticalMenuTrigger {
+	display: none;
+	position: relative;
+	z-index: 1;
+	margin: 0 0.5em 0 -0.5em;
+	line-height: math($(logoHeight)*0.6)px;
+	font-size: 1.5em;
+	.rtl & {margin: 0 -0.5em 0 0.5em;}
+}
+
+.btMenuVertical {
+	> .menuPort {
+		text-align: center;
+		height: 100%;
+		top: 0;
+		bottom: 0;
+		position: fixed;
+		width: $(verticalMenuWidth)px;
+		clear: both;
+		transition: transform 1s ease-out-quint;
+		z-index: 101;
+		overflow: hidden;
+		padding: 0;
+		box-shadow: none;
+		.touch & {
+			overflow: auto;	
+		}
+		.btMainLogo {
+			display: block !important;
+		}
+		.btAltLogo {
+			display: none !important;
+		}
+		.logo {
+			float: none;
+			margin: 0;
+			padding: 0 2em;
+			.btAccentDarkHeader&, .btLightAccentHeader& {
+				background-color: $(accentColor);
+			}
+			img {
+				margin: 0 auto;
+				display: block;
+				height: auto;
+				max-width: 100%;
+			}
+		}
+		.btCloseVertical {
+			cursor: pointer;
+			font-size: 1.5em;
+			position: absolute;
+			right: 20px;
+    		top: 10px;
+    		.rtl& {
+    			right: auto;
+    			left: 20px;
+    		}
+		}
+		.btCloseVertical:before {
+			font-family: FontAwesome;
+			content: '\f00d';
+			.btAccentDarkHeader&, .btLightAccentHeader& {color: $(darkFontColor);}
+		}
+		.btCloseVertical:before:hover {
+			color: $(accentColor);
+		}
+		nav {
+			margin: 0;
+			ul {
+				transition: none;
+				li {
+					padding: 0;
+					position: relative;
+					background-color: transparent;
+					a {
+						line-height: 1.1;
+						padding: $(innerHorizontalPadding)px 2em;
+						border: none;
+						font-weight: 400;
+					}
+					li {
+						font-size: 0.9em;
+					}					
+				}
+				li:not(.current-menu-ancestor) > ul {
+					display: none;
+				}
+				ul li {
+					padding: 0;
+					opacity: 1;
+					border: none;
+					background-color: transparent;
+					ul {
+						opacity: 0.8;
+						li a {
+							border: none !important;
+						}
+					}
+					
+				}
+			}
+			:any(li.current-menu-ancestor, li.current-menu-item) > a {
+				font-weight: 600;
+			}	
+		}
+	}
+	.btVerticalMenuTrigger {
+		display: block;		
+	}
+	.menuScrollPort {
+		width: $(verticalMenuWidth)px;
+		overflow: hidden;
+	}
+}
+
+
+.btMenuVerticalRight {
+	> .menuPort {
+		right: 0;
+		box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+		transform: translateX(100%);
+	}
+	.btVerticalMenuTrigger {
+		float: right;		
+	}
+}
+
+.btMenuVerticalLeft {
+	> .menuPort {
+		left: 0;
+		box-shadow: 2px 0 5px rgba(0,0,0,.10);
+		transform: translateX(-100%);
+		.rtl& {
+			transform: translateX(100%);
+			left: auto;
+			right: 0;
+			.btMenuVerticalOn& {transform: translateX(0);}
+		}
+	}
+	.btVerticalMenuTrigger {
+		float: left;
+		.rtl& {float: right;}		
+	}
+}
+
+@media (min-width: $(baseTemplateWidth)px) {
+
+	.btMenuVerticalRight {
+		> .menuPort {
+			transform: translateX(0%);
+		}
+	}
+
+	.btMenuVerticalLeft {
+		> .menuPort {
+			transform: translateX(0%);
+		}
+	}
+
+	.btMenuVertical .menuPort, .btMenuVertical.btMenuVerticalOn .menuPort {
+		transform: translate3d(0,0,0);
+	}
+
+	.btMenuVerticalLeft.btHideMenu .menuPort {
+		transform: translate3d(-$(verticalMenuWidth)px,0,0);
+	}
+	.btMenuVerticalRight.btHideMenu .menuPort {
+		transform: translate3d($(verticalMenuWidth)px,0,0);
+	}
+
+	.btMenuVerticalLeft.btHideMenu.btMenuVerticalOn > .menuPort {
+		transform: translate3d(0,0,0);
+	}
+	.btMenuVerticalRight.btHideMenu.btMenuVerticalOn .menuPort {
+		transform: translate3d(0,0,0);
+	}
+
+	.btMenuVertical.btMenuGutter .mainHeader {
+		display: none;
+	}
+
+	.btMenuVertical.btMenuGutter.btHideMenu .mainHeader {
+		display: block;
+	}
+
+	.btMenuVertical.btBelowMenu .btContentWrap {
+		padding: 0 !important;
+	}
+
+	.btMenuVertical .gutter .port,
+	.btMenuVerticalLeftOn.btMenuGutter .mainHeader .topBarPort,
+	.btMenuVerticalRightOn.btMenuGutter .mainHeader .topBarPort {
+		/*max-width: none;*/
+		padding-left: $(pagePadding)px;
+		padding-right: $(pagePadding)px;
+	}
+
+    .btMenuVerticalOn .btVerticalMenuTrigger .btIco a:before {
+		color: $(accentColor) !important;
+	}
+
+	.btMenuVertical .btLogoArea .btVerticalMenuTrigger{
+		display: none;
+	}
+
+	.btMenuVertical:not(.btHideMenu) {
+		.btLogoArea .logo, .btCloseVertical {
+			display: none;
+		}	
+	}
+
+	.btMenuVertical.btHideMenu .btLogoArea .btVerticalMenuTrigger {
+		display: block;
+	}
+
+	.btMenuVerticalLeft .btPageWrap, .btMenuVerticalLeft.btMenuVerticalOn .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0 0 0 $(verticalMenuWidth)px;
+	}
+
+	.btMenuVerticalRight .btPageWrap, .btMenuVerticalRight.btMenuVerticalOn .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0 $(verticalMenuWidth)px 0 0;
+	}
+
+	:any(.btMenuVerticalRight, .btMenuVerticalLeft).btHideMenu .btPageWrap {
+		transform: translate3d(0,0,0);
+		margin: 0;
+	}
+
+	.btMenuVerticalLeft.btMenuVerticalOn.btHideMenu .btPageWrap {
+		transform: translate3d($(verticalMenuWidth)px,0,0);
+		margin: 0;
+	}
+
+	.btMenuVerticalRight.btMenuVerticalOn.btHideMenu .btPageWrap {
+		transform: translate3d(-$(verticalMenuWidth)px,0,0);
+		margin: 0;
+	}
+
+}
+
+.btMenuVerticalOn .menuPort {
+	transform: translateX(0);
+	transition: transform 1s ease-out-quint;
+}
+
+.btMenuVerticalLeft.btMenuVerticalOn .btPageWrap {
+	transform: translateX($(verticalMenuWidth)px);
+	.rtl& {transform: translateX(-$(verticalMenuWidth)px);}
+}
+
+.btMenuVerticalRight.btMenuVerticalOn .btPageWrap {
+	transform: translateX(-$(verticalMenuWidth)px);
+}
+
+.btMenuVertical.btDarkSkin .menuPort {
+	background-color: $(darkBgColor);
+	box-shadow: 1px 0 0 0 $(darkBorderColor);
+}
+
+.btMenuVertical.btLightSkin  .menuPort {
+	background-color: $(lightBgColor);
+	box-shadow: 1px 0 0 0 $(lightBorderColor);
+}
+
+/* Header tools layout */
+
+
+
+a.btIconWidget {
+	:lightSkinSelector & {
+		color: $(lightFontColor);	
+	}
+	:darkSkinSelector & {
+		color: $(darkFontColor);	
+	}
+	.btIconWidgetTitle {
+		opacity: 0.7;
+	}
+	.btIconWidgetText {
+		opacity: 0.99;
+	}
+}
+
+.btSpecialHeaderIcon {
+	.btIco .btIcoHolder:before, .btIconWidgetTitle, .btIconWidgetText {
+		color: $(accentColor) !important;
+	}
+}
+
+.btMenuHorizontal {
+	
+	/* Top Tools */
+
+	.btTopToolsRight, .btTopToolsLeft {
+		flex-grow: 1;
+	}
+
+	.topTools, .topBarInMenu {
+		.btIconWidget {
+			position: relative;
+			display: inline-block;
+			&:hover {
+				color: $(accentColor);	
+			}
+		}
+		.btSearch .btIco {
+			margin-left: 0.5em;
+			.rtl& {
+				margin-left: 0;
+				margin-right: 0.5em;
+			}
+		}
+		.btIconWidget:not(:first-child) {
+			margin-left: 0.5em;
+			.rtl& {
+				margin-right: 0.5em;
+				margin-left: 0em;				
+			}
+		}
+		.btWidgetWithText .btIco {
+			margin-right: 0.2em;
+			.rtl& {
+				margin-right: 0em;
+				margin-left: 0.1em;				
+			}
+		}
+		.btAccentIconWidget {
+			background-color: $(accentColor);
+			color: $(darkFontColor);
+			.btTopToolsInMenuArea& {
+				background-color: $(alternateColor);
+				&:hover {
+					color: $(accentColor);
+				}				
+			}
+			padding: 0 1em;
+			box-shadow: inset 0 0 5px 0 rgba(0,0,0,0.2);
+			transition: all 300ms ease;
+			opacity: 1;
+			.btAccentLightHeader&, .btLightAccentHeader& {
+				background-color: $(alternateColor);
+				&:hover {
+					background-color: $(lightBgColor);
+					color: $(lightFontColor);
+					.btIconWidgetTitle {color: $(lightFontColor);}
+				}
+			}
+
+			&:hover {
+				color: $(alternateColor);
+			}
+			&:hover {
+				.btLightHeader&, .btAccentDarkHeader& {
+					background-color: $(lightBgColor);
+					color: $(lightFontColor);
+					.btIconWidgetTitle {color: $(lightFontColor);}
+				}
+				.btTopToolsInMenuArea.btLightAccentHeader& {
+					background-color: $(accentColor);
+					color: $(darkFontColor);
+					.btIconWidgetTitle {color: $(darkFontColor);}
+				}
+			}
+			
+		}
+		.btIconWidgetContent {
+			/*margin-left: 0.3em;*/
+			line-height: inherit;
+		}
+		:any(.btIconWidgetTitle, .btIconWidgetText) {
+			display: inline-block;
+			line-height: inherit;
+			margin-right: 0.5em;
+		}
+		.btIconWidgetTitle {
+			opacity: 1;
+			transition: all 300ms ease;
+		}
+	}
+	
+	.btBelowLogoArea .btAccentIconWidget {
+		line-height: math( $(belowLogoMenuHeight) - 18 )px;
+		.btIconWidgetContent {
+			font-size: 0.8em;
+		}
+		.btHardRoundedButtons& {border-radius: $(hardBorderRadius);}
+		.btSoftRoundedButtons& {border-radius: $(softBorderRadius);}
+		
+	}
+
+	/* Logo Area Tools */
+	.topBarInLogoArea {
+		float: right;
+		.rtl& {float: left;}
+		height: $(logoHeight)px;
+		display: flex;
+		align-items: center;
+		.topBarInLogoAreaCell {
+			border: 0px solid $(accentColor);
+			.btIconWidget {
+				display: table;
+			}
+			.btIconWidget {
+				float: left;
+				margin: 0 0 0 2em;
+				.rtl& {
+					float: right;
+					margin: 0 2em 0 0;
+				}
+			}
+
+			.btIconWidgetIcon, .btIconWidgetContent {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			.btIconWidgetIcon {
+				line-height: 1;
+				padding: 0px 0.35em 0 0;
+				text-align: left;
+				.btIco .btIcoHolder:before {
+					font-size: 32px;
+					font-weight: 400;
+				}
+			}
+			.btIconWidgetTitle, .btIconWidgetText {
+				display: block;
+				line-height: 1;
+			}
+			.btIconWidgetTitle {
+				margin-bottom: 0.35em;
+				font-size: 0.7em;
+				text-transform: uppercase;
+			}
+			.btIconWidgetText {
+				font-size: 1.1em;
+			}
+		}
+	}
+
+}
+
+
+/* Tools in vertical menu */
+
+.btMenuVertical .menuPort {
+
+	.btEmptyElement {
+		display: none;
+	}
+	
+	.btTopToolsRight, .btTopToolsLeft {
+		max-width: none;
+		float: none;
+	}
+
+	.topBar {
+		padding: 0;
+	}
+
+	:any(.topBarPort .btTopToolsLeft, .topBarPort .btTopToolsRight) {
+		span.btIco {
+			margin: 0 5px;
+			font-size: 1em;
+		}
+		.btWidgetWithText span.btIco {
+			font-size: 2em;
+		}		
+	}
+	
+	
+
+    .topTools {
+        position: relative;
+        padding: 10px 0px 0;
+		text-align: center;
+		font-size: 14px;		
+    }
+	.btIco {
+		font-size: 1.2em;
+	}
+	.btIconWidget {
+		padding: 0;
+		margin-bottom: 1em;
+		.btIconWidgetIcon {
+			margin: 0 auto 15px;
+			text-align: center;
+		} 
+		.btIconWidgetContent {
+			float: none;
+			margin: 0;
+			text-align: center;
+			clear: both;
+		}
+		:any(.btIconWidgetTitle, .btIconWidgetText) {
+			display: block;
+			font-size: 14px;
+		}
+		.btIconWidgetTitle {
+			margin: 0;
+			line-height: 1;
+		}
+		.btIconWidgetText {
+			margin: 5px 0 20px;
+			line-height: 1.5;
+		}
+		&.btWidgetWithText {
+			display: block;
+			.btIconWidgetIcon {
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+
+	.topBarInLogoArea:after, .topBar:after {
+		display: table;
+		content: ' ';
+		clear: both;
+	}
+	.topBarInMenu {
+		margin: 3em 0 0;
+	}
+	
+	nav:before, nav:after {
+		display: inline-block;
+		content: ' ';
+		width: 85px;
+		height: 4px;
+		clear: both;
+	}
+	nav:before {
+		margin: 1em 0 1em;
+	}
+	nav:after {
+		margin: 1em 0 1em;
+	}
+}
+
+:lightSkinSelector {
+	nav:before, nav:after  {
+		background-color: $(lightHeadlineColor);		
+	}
+}
+
+:darkSkinSelector {
+	nav:before, nav:after  {
+		background-color: $(darkHeadlineColor);		
+	}
+}
+
+/* Top bar search */
+
+:any(.topBar, .topBarInMenu) .widget_search {
+	display: inline-block;
+	margin-left: 0.2em;
+	h2 {
+		display: none;
+	}
+	.btSearch {
+		position: relative;
+		.btSearchInner {
+			position: absolute;
+			top: 0;
+			left: -300px;
+			width: 300px;
+			font-size: 12px;
+			display: none;
+			text-align: right;
+		}
+	}
+	input {
+		font-size: inherit;
+		max-width: 150px;
+		padding-left: 5px;
+		clear: none;
+		background: $(darkBgSubColor);
+	}
+	button {
+		width: 23px;
+		height: 23px;
+		background: $(accentColor);
+		border: 0;
+		float: right;
+		margin: 0;
+		cursor: pointer;
+	}
+	button:before{
+		font-family: FontAwesome;
+		content: "\f002";
+		display: inline-block;
+		color: $(accentColor);
+	}
+	button:hover {
+		background: $(accentColorDark);
+	}
+}
+
+.btSearchInner.btFromTopBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: $(accentColor);
+	transform: translateY(-200%);
+	transition: all 300ms ease;
+	z-index: 99998;
+	.btSearchInnerContent {
+		position: relative;
+	}
+	form {
+		padding: 0 40px 0 0;
+		.rtl & {padding: 0 0 0 40px;}
+		margin: 3em 0;
+		text-align: center;
+		position: relative;
+		input[type="text"]{
+			border: none;
+			background: $(lightBgColor);
+			padding: 0 50px 0 20px;
+			text-align: left;
+			.rtl & {
+				padding: 0 20px 0 50px;
+				text-align: initial;
+			}
+			font-size: 22px;
+			font-weight: 300;
+			color: $(lightFontColor);
+			line-height: 60px;
+			height: 60px;
+			.btHardRoundedButtons & {border-radius: $(hardBorderRadius);}
+			.btSoftRoundedButtons & {border-radius: $(softBorderRadius);}
+		}
+		button {
+			position: absolute;
+			right: 40px;
+			.rtl & {
+				right: auto;
+				left: 40px;
+			}
+			top: 0;
+			line-height: 60px;
+			border-radius: 0;
+			width: 60px;
+			height: 60px;
+			background: transparent;
+			border: 0;
+			cursor: pointer;
+			&:before {
+				font-family: FontAwesome;
+				font-size: 21px;
+				display: block;
+				content: "\f002";
+				color: $(lightFontColor);
+				transition: color 300ms ease;
+			}
+			&:hover:before {
+				color: $(accentColor);
+				transition: color 300ms ease;
+			}
+		}
+		
+	}
+	.btSearchInnerClose {
+		display: block;
+		position: absolute;
+		right: 0;
+		.rtl & {
+			right: auto;
+			left: 0;
+		}
+		top: 0;
+		cursor: pointer;
+		line-height: 58px;
+		font-size: 1.5em;
+		.btIco {
+			margin: 0;
+			.btIcoHolder:before {
+				transform: rotate(0);
+				color: $(darkFontColor);
+				transition: transform 500ms ease;
+			}
+			&:hover a.btIcoHolder:before {
+				transform: rotate(180deg);
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+.btTopToolsSearchOpen .btSearchInner.btFromTopBox {
+	transform: translateY(0);
+	transition: all 300ms ease;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* iScroll */
+
+:darkSkinSelector .iScrollIndicator {
+	background-color: rgba(255, 255, 255, 0.05) !important;
+	border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Prevent horizontal scroll on small screens when menu is open */
+
+body.btMenuVerticalOn {
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+}
+
+
+/* IE10 Menu Fix */
+
+
+html[data-useragent*='MSIE 10.0'] {
+
+	body.btMenuHorizontal .menuPort ul > li > ul {
+		opacity: 1;
+		pointer-events: auto;
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul {
+		display: block;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li > ul {
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul {
+		display: block;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul > li > ul {
+		display: none;
+	}
+
+	body.btMenuHorizontal .menuPort ul > li.on > ul > li.on > ul > li.on > ul {
+		display: block;
+	}
+
+
+}

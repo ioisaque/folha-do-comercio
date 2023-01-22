@@ -1,0 +1,58 @@
+/* 
+Theme Name: Bold News
+Theme URI: http://bold-news.bold-themes.com
+Description: Bold News is a WordPress theme exclusively built for news, newspaper, magazine, publishing or review websites.
+Version: 1.1.9
+Author: BoldThemes
+Author URI: http://bold-themes.com
+Tags: one-column, right-sidebar, custom-menu, featured-images, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: bold-news
+License: GNU General Public License version 3.0 & Envato Regular/Extended License
+License URI:  http://www.gnu.org/licenses/gpl-3.0.html & http://themeforest.net/licenses
+
+All PHP code is released under the GNU General Public Licence version 3.0
+All HTML/CSS/JAVASCRIPT code is released under Envato's Regular/Extended License
+
+[Table of contents]
+
+1. Base
+2. Typography
+3. Bootstrap grid
+4. Bold themes grid 
+5. Template
+6. Header
+7. Footer
+8. Post
+9. Widgets
+10. Elements
+11. Animations
+12. Woocommerce
+13. Cost calculator
+14. Screens
+15. Typography screens
+15. Woocommerce screens
+16. RTLs
+17. Fixes
+18. Settings panel
+
+*/
+
+@import url("css/base.css");
+@import url("css/typography.css");
+@import url("css/bootstrap.grid.css");
+@import url("css/grid.css");
+@import url("css/template.css");
+@import url("css/header.css");
+@import url("css/footer.css");
+@import url("css/post.css");
+@import url("css/widgets.css"); 
+@import url("css/elements.css");
+@import url("css/animations.css");
+@import url("css/woocommerce.css");
+@import url("css/costcalc.css");
+@import url("css/screens.css");
+@import url("css/typography-screens.css");
+@import url("css/woocommerce-screens.css");
+@import url("css/rtl.css");
+@import url("css/_fixes.css");
+@import url("customizer/main.css");

@@ -1,0 +1,46 @@
+2018-04-23T09:22:22+00:00 CRITICAL Uncaught Error: Call to undefined function boldthemes_rwmb_meta() in C:\xampp\htdocs\folha-do-comercio\wp-content\plugins\bold-news\bold-news.php:679
+Stack trace:
+#0 C:\xampp\htdocs\folha-do-comercio\wp-includes\shortcodes.php(319): bt_section::handle_shortcode(Array, '[bt_row][bt_col...', 'bt_section')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\folha-do-comercio\wp-includes\shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(bt_sin...', 'do_shortcode_ta...', '[bt_section lay...')
+#3 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(286): do_shortcode('[bt_section lay...')
+#4 C:\xampp\htdocs\folha-do-comercio\wp-includes\plugin.php(203): WP_Hook->apply_filters('[bt_section lay...', Array)
+#5 C:\xampp\htdocs\folha-do-comercio\wp-includes\post-template.php(240): apply_filters('the_content', '[bt_section lay...')
+#6 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\legatus223\legatus-theme\includes\page-single.php(14): the_content()
+#7 C:\xampp\htdocs\folha-do-comercio\
+
+2018-04-23T09:23:53+00:00 CRITICAL Uncaught Error: Call to undefined function boldthemes_rwmb_meta() in C:\xampp\htdocs\folha-do-comercio\wp-content\plugins\bold-news\bold-news.php:679
+Stack trace:
+#0 C:\xampp\htdocs\folha-do-comercio\wp-includes\shortcodes.php(319): bt_section::handle_shortcode(Array, '[bt_row][bt_col...', 'bt_section')
+#1 [internal function]: do_shortcode_tag(Array)
+#2 C:\xampp\htdocs\folha-do-comercio\wp-includes\shortcodes.php(197): preg_replace_callback('/\\[(\\[?)(bt_sin...', 'do_shortcode_ta...', '<div class="bt_...')
+#3 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(286): do_shortcode('<div class="bt_...')
+#4 C:\xampp\htdocs\folha-do-comercio\wp-includes\plugin.php(203): WP_Hook->apply_filters('<div class="bt_...', Array)
+#5 C:\xampp\htdocs\folha-do-comercio\wp-includes\post-template.php(240): apply_filters('the_content', '[bt_section lay...')
+#6 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\legatus223\legatus-theme\includes\page-single.php(14): the_content()
+#7 C:\xampp\htdocs\folha-do-comercio\
+
+2018-04-23T13:29:52+00:00 CRITICAL Uncaught Error: Class 'CssCrush\Crush' not found in C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushColor.php:17
+Stack trace:
+#0 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushColor.php(141): CssCrush\Color::getKeywords()
+#1 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushFunctions.php(239): CssCrush\Color::test('pink')
+#2 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\css_override.php(38): CssCrush\fn__l_adjust('pink -20')
+#3 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\functions.php(135): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(286): bold_news_enqueue_scripts_styles('')
+#5 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\folha-do-comercio\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\folha-do-comercio\wp-includes\scrip
+
+2018-04-23T13:29:55+00:00 CRITICAL Uncaught Error: Class 'CssCrush\Crush' not found in C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushColor.php:17
+Stack trace:
+#0 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushColor.php(141): CssCrush\Color::getKeywords()
+#1 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\framework\BTCrushFunctions.php(239): CssCrush\Color::test('pink')
+#2 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\css_override.php(38): CssCrush\fn__l_adjust('pink -20')
+#3 C:\xampp\htdocs\folha-do-comercio\wp-content\themes\bold-news\functions.php(135): require_once('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(286): bold_news_enqueue_scripts_styles('')
+#5 C:\xampp\htdocs\folha-do-comercio\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#6 C:\xampp\htdocs\folha-do-comercio\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#7 C:\xampp\htdocs\folha-do-comercio\wp-includes\scrip
+
+2018-04-24T08:33:40+00:00 CRITICAL Maximum execution time of 30 seconds exceeded
+

@@ -1,0 +1,18 @@
+
+/* Weather icons */
+
+@font-face {
+    font-family: 'WeatherIcons';
+    src: url('bb-weather.woff') format('woff'),
+         url('bb-weather.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*[data-ico-wi]:before {
+    font-family: WeatherIcons;
+    content: attr(data-ico-wi);
+}
+
+
+

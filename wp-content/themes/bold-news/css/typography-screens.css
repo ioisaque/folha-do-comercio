@@ -1,0 +1,156 @@
+@media (max-width: 1400px) { 
+	
+	/* Typography breakpoint start 1350 */
+	
+	.header.huge {
+		h1 {
+			font-size: 5.4em;
+		}
+		.btSuperTitle {
+			font-size: 1.2em;
+		}
+		.btSubTitle {
+			font-size: 1.5em;
+		}
+	}	
+	.header.extralarge {
+		h1 {
+			font-size: 3.5em;
+		}
+		.btSuperTitle {
+			font-size: 1.1em;
+		}
+		.btSubTitle {
+			font-size: 1.3em;
+		}
+	}
+
+	
+	/* /Typography breakpoint */
+}
+
+@media (max-width: 1199px) {
+
+	/* Typography breakpoint start 1199 */
+	
+	body { font-size: 14px; } 
+
+	.header.large {
+		h1, h2 {
+			font-size: 2.2em;	
+		}
+		.btSuperTitle, .btSubTitle {
+			font-size: 1em;
+		}
+	}
+	
+	.header.medium {
+		h2, h3 {
+			font-size: 1.8em;	
+		}
+	}
+
+	.btCounterHolder {
+		font-size: 2em;
+	}
+	
+	.btCounterHolder.btCounterLargeSize {
+		font-size: 2.5em;
+	}
+	.btSinglePostTemplate {
+		.largeTemplate&{
+			:hTagSelector {
+				font-size: 1.5em;
+			}
+		}
+	}
+	
+	/* Revert all subtitles and supertitles in smaller sizes to 11px */
+	.btArticleListItem, .btPostSingleItemColumns {
+		.header :any(.btSuperTitle, .btSubTitle) {
+			font-size: .785em !important;
+		}		
+	}
+	.btSinglePostTemplate {
+		.btSinglePostContent {
+			.btSinglePostBottomData, .btSinglePostTopData {
+				font-size: .785em !important;
+			}
+		}
+		.btSinglePostTopMetaData, .btPostImageHolder .btSinglePostTopMetaData {
+			.btArticleCategories {
+				font-size: .785em !important;
+				.defaultTemplate&, .smallTemplate& {
+					font-size: .785em !important;
+				}
+			}
+		}
+	}
+	.articleSideGutter, .simpleArticleSideGutter, .btArticleSideinfo .header.medium .btSubTitle, .btBox .tagcloud a, .btTags ul a {
+		font-size: .785em !important;
+	}
+	.btBox, .btCustomMenu, .btTopBox {
+		ul {
+			.header {
+				.btSuperTitle {
+					font-size: .785em !important;
+				}
+			}
+		}
+	}
+	.btSidebar, footer {
+		.btIconWidget {
+			.btIconWidgetContent {
+				.btIconWidgetTitle {
+					font-size: .785em !important;
+				}
+			}
+		}
+	}
+	.btShowTitle {
+		.header.small {
+			.btSuperTitle {
+				font-size: .785em !important;
+			}
+		}
+	}
+	.bpgPhoto:hover {
+		.captionPane {
+			.captionTable .captionTxt {
+				.btTilesArticleTop, .btTilesArticleBottom {
+					font-size: .785em !important;
+				}
+			}
+		}
+	}
+	.btCommentsBox {
+		.vcard {
+			.posted {
+				font-size: .785em !important;
+			}
+		}
+	}
+	.btArticleCategories {
+		.gridItem & {
+			font-size: .785em !important;
+		}
+	}
+	.neighboringArticles .nbs a .nbsItem .nbsDir {
+		font-size: 0.419em !important;
+	}
+	.header.small .btSuperTitle {
+		font-size: .9em !important;
+	}
+
+	/* /Typography breakpoint */
+
+}
+
+@media (max-width: 768px) {
+	
+	/* Typography breakpoint start 768 */
+	
+	body { font-size: 14px; } 
+
+	/* Typography breakpoint */
+}

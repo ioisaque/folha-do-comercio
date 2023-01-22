@@ -1,0 +1,6 @@
+@media (max-width: math($(baseTemplateWidth)-1, px)) { 
+	.boldRow[style*="580px"], .boldRow[style*="530px"] {
+		float: none !important;
+		max-width: none !important;
+	}
+}
